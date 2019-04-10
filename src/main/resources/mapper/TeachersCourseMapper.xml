@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hhj.mapper.TeachersCourseMapper">
+  <resultMap id="BaseResultMap" type="cn.hhj.pojo.TeachersCourse">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="teachers_info_id" jdbcType="INTEGER" property="teachersInfoId" />
+    <result column="course_id" jdbcType="INTEGER" property="courseId" />
+    <result column="years" jdbcType="VARCHAR" property="years" />
+    <result column="semester" jdbcType="INTEGER" property="semester" />
+    <result column="class_id" jdbcType="INTEGER" property="classId" />
+    <result column="classroom" jdbcType="VARCHAR" property="classroom" />
+    <result column="class_time" jdbcType="VARCHAR" property="classTime" />
+    <result column="students_number" jdbcType="INTEGER" property="studentsNumber" />
+    <result column="Max_number" jdbcType="INTEGER" property="maxNumber" />
+  </resultMap>
+
+</mapper>
