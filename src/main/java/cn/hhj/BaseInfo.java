@@ -7,6 +7,8 @@ public class BaseInfo {
     public static final String SUCCESS = "success";
     //返回失败的flag值
     public static final String FAIL = "fail";
+    //返回错误的flag值
+    public static final String ERROR = "error";
     //返回成功的状态码
     public static final int SUCCESS_CODE = 200;
     //返回成功的msg信息

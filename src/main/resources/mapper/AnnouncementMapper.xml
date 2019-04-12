@@ -6,4 +6,42 @@
     <result column="tittle" jdbcType="VARCHAR" property="tittle" />
   </resultMap>
 
+  <insert id="add" parameterType="cn.hhj.pojo.Announcement">
+    INSERT INTO announcement(
+      tittle,
+      text
+    )VALUE(
+      #{tittle},
+      #{text}
+    )
+  </insert>
+
+  <delete id="deleteById" parameterType="cn.hhj.pojo.Announcement">
+    DELETE
+    FROM announcement
+    WHERE id = #{id}
+  </delete>
+
+  <update id="update" parameterType="cn.hhj.pojo.Announcement">
+    UPDATE announcement SET
+      tittle = #{tittle},
+      text = #{text}
+    WHERE id = #{id}
+  </update>
+
+  <select id="quire" resultType="cn.hhj.pojo.Announcement">
+    SELECT *
+    FROM announcement
+    <where>
+      <if test="id != null">
+        id = #{id}
+      </if>
+      <if test="tittle != null">
+        and tittle = #{tittle}
+      </if>
+      <if test="text != null">
+        and text = #{text}
+      </if>
+    </where>
+  </select>
 </mapper>
