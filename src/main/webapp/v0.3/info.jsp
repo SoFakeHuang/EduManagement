@@ -2,12 +2,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
-    <%@ include file ="Resource.jsp"%>
+    <%@ include file="Resource.jsp" %>
     <title>教务管理系统</title>
 </head>
 <body class="sidebar-fixed header-fixed">
 <div class="page-wrapper">
-    <%@include file="Head.jsp"%>
+    <%@include file="Head.jsp" %>
 
     <div class="main-container">
         <div class="sidebar">
@@ -37,7 +37,7 @@
                                 <a href="elcourse.jsp" class="nav-link">
                                     <i class="icon icon-target"></i> 自主选课
                                 </a>
-                            </li>                  
+                            </li>
                         </ul>
                     </li>
 
@@ -77,11 +77,55 @@
             <div class="container-fluid">
                 <div class="row">
 
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header bg-light">
+                                学生信息
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card text-white border-0">
+                                            <div class="card-header bg-info">
+                                                基本信息
+                                            </div>
+
+                                            <div class="card-body bg-info">
+                                                <ul>
+                                                    <li>学号：516556</li>
+                                                    <li>姓名:</li>
+                                                    <li>性别</li>
+                                                    <li>用户组</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="card text-white border-0">
+                                            <div class="card-header bg-primary">
+                                                详细信息
+                                            </div>
+
+                                            <div class="card-body bg-primary">
+                                                <ul>
+                                                    <li>电话号码：</li>
+                                                    <li>籍贯：</li>
+                                                    <li>身份证号码：</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
-<%@include file="JSResource.jsp"%>
+<%@include file="JSResource.jsp" %>
 </body>
 </html>
