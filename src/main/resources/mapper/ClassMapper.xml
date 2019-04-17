@@ -5,8 +5,59 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="students_number" jdbcType="INTEGER" property="studentsNumber" />
-    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="class_id" jdbcType="INTEGER" property="classId" />
     <result column="head_teacher" jdbcType="INTEGER" property="headTeacher" />
   </resultMap>
+
+  <insert id="add" parameterType="cn.hhj.pojo.Class">
+    INSERT INTO class(
+      name,
+      students_number,
+      department_id,
+      head_teacher
+    )VALUE(
+      #{name},
+      #{studentsNumber},
+      #{departmentId},
+      #{headTeacher}
+    )
+  </insert>
+
+  <delete id="deleteById" parameterType="cn.hhj.pojo.Class">
+    DELETE
+    FROM class
+    WHERE id = #{id}
+  </delete>
+
+  <update id="update" parameterType="cn.hhj.pojo.Class">
+    UPDATE class SET
+      name = #{name},
+      students_number = #{studentsNumber},
+      department_id = #{departmentId},
+      head_teacher = #{headTeacher}
+    WHERE id = #{id}
+  </update>
+
+  <select id="quire" resultType="cn.hhj.pojo.Class">
+    SELECT *
+    FROM class
+    <where>
+      <if test="id != null">
+        id = #{id}
+      </if>
+      <if test="name != null">
+        and name = #{name}
+      </if>
+      <if test="studentsNumber != null">
+        and students_number = #{studentsNumber}
+      </if>
+      <if test="departmentId != null">
+        and department_id = #{departmentId}
+      </if>
+      <if test="headTeacher != null">
+        and head_teacher = #{headTeacher}
+      </if>
+    </where>
+  </select>
 
 </mapper>

@@ -11,4 +11,78 @@
     <result column="teacher_number" jdbcType="VARCHAR" property="teacherNumber" />
   </resultMap>
 
+  <insert id="add" parameterType="cn.hhj.pojo.TeachersInfo">
+    INSERT INTO teachers_info(
+      name,
+      department_id,
+      user_id,
+      sex,
+      phone,
+      teacher_number
+    )VALUE(
+      #{name},
+      #{departmentId},
+      #{userId},
+      #{sex},
+      #{phone},
+      #{teacherNumber}
+    )
+  </insert>
+
+  <delete id="deleteById" parameterType="cn.hhj.pojo.TeachersInfo">
+    DELETE
+    FROM teachers_info
+    WHERE id = #{id}
+  </delete>
+
+  <update id="update" parameterType="cn.hhj.pojo.TeachersInfo">
+    UPDATE teachers_info
+    <set>
+      <if test="name != null">
+        name = #{name},
+      </if>
+      <if test="departmentId != null">
+        department_id = #{departmentId},
+      </if>
+      <if test="sex != null">
+        sex = #{sex},
+      </if>
+      <if test="phone != null">
+        phone = #{phone},
+      </if>
+      <if test="teacherNumber != null">
+        teacher_number = #{teacherNumber}
+      </if>
+    </set>
+    WHERE id = #{id}
+  </update>
+
+  <select id="quire" resultType="cn.hhj.pojo.TeachersInfo">
+    SELECT *
+    FROM teachers_info
+    <where>
+      <if test="id != null">
+        id = #{id}
+      </if>
+      <if test="name != null">
+        and name = #{name}
+      </if>
+      <if test="departmentId != null">
+        and department_id = #{departmentId}
+      </if>
+      <if test="userId != null">
+        and user_id = #{userId}
+      </if>
+      <if test="sex != null">
+        and sex = #{sex}
+      </if>
+      <if test="phone != null">
+        and phone = #{phone}
+      </if>
+      <if test="teacherNumber != null">
+        and teacher_number = #{teacherNumber}
+      </if>
+    </where>
+  </select>
+
 </mapper>

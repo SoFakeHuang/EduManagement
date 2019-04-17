@@ -2,4 +2,57 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.hhj.mapper.GradeMapper">
 
+    <insert id="add" parameterType="cn.hhj.pojo.Grade">
+    INSERT INTO grade(
+      grade,
+      students_info_id,
+      teachers_course_id
+    )VALUE(
+      #{grade},
+      #{studentsInfoId},
+      #{teachersCourseId}
+    )
+  </insert>
+
+    <delete id="deleteById" parameterType="cn.hhj.pojo.Grade">
+    DELETE
+    FROM grade
+    WHERE id = #{id}
+  </delete>
+
+    <update id="update" parameterType="cn.hhj.pojo.Grade">
+    UPDATE grade
+    <set>
+        <if test="grade != null">
+            grade = #{grade}
+        </if>
+        <if test="studentsInfoId != null">
+            students_info_id = #{studentsInfoId}
+        </if>
+        <if test="teachersCourseId != null">
+            teachers_course_id = #{teachersCourseId}
+        </if>
+    </set>
+    WHERE id = #{id}
+  </update>
+
+    <select id="quire" resultType="cn.hhj.pojo.Grade">
+        SELECT *
+        FROM grade
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="grade != null">
+                and grade = #{grade}
+            </if>
+            <if test="studentsInfoId != null">
+                and students_info_id = #{studentsInfoId}
+            </if>
+            <if test="teachersCourseId != null">
+                and teachers_course_id = #{teachersCourseId}
+            </if>
+        </where>
+    </select>
+
 </mapper>

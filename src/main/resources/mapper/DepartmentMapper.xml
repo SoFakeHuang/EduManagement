@@ -7,4 +7,43 @@
     <result column="introduce" jdbcType="VARCHAR" property="introduce" />
   </resultMap>
 
+  <insert id="add" parameterType="cn.hhj.pojo.Department">
+    INSERT INTO department(
+      name,
+      introduce
+    )VALUE(
+      #{name},
+      #{introduce}
+    )
+  </insert>
+
+  <delete id="deleteById" parameterType="cn.hhj.pojo.Department">
+    DELETE
+    FROM department
+    WHERE id = #{id}
+  </delete>
+
+  <update id="update" parameterType="cn.hhj.pojo.Department">
+    UPDATE department SET
+      name = #{name},
+      introduce = #{introduce}
+    WHERE id = #{id}
+  </update>
+
+  <select id="quire" resultType="cn.hhj.pojo.Department">
+    SELECT *
+    FROM department
+    <where>
+      <if test="id != null">
+        id = #{id}
+      </if>
+      <if test="name != null">
+        and name = #{name}
+      </if>
+      <if test="introduce != null">
+        and introduce = #{introduce}
+      </if>
+    </where>
+  </select>
+
 </mapper>

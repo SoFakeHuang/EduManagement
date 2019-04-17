@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>教务管理系统</title>
-    <link rel="stylesheet" href="./vendor/simple-line-icons/css/simple-line-icons.css">
-    <link rel="stylesheet" href="./vendor/font-awesome/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="http://localhost:8080/EduManagement/v0.2/vendor/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="http://localhost:8080/EduManagement/v0.2/vendor/font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="http://localhost:8080/EduManagement/v0.2/css/styles.css">
 </head>
 <body class="sidebar-fixed header-fixed">
 <div class="page-wrapper">
@@ -18,7 +18,7 @@
         </a>
 
         <a class="navbar-brand" href="#">
-            <img src="./imgs/logo.png" alt="logo">
+            <img src="http://localhost:8080/EduManagement/v0.2/imgs/logo.png" alt="logo">
         </a>
 
         <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
@@ -29,8 +29,8 @@
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="./imgs/avatar-1.png" class="avatar avatar-sm" alt="logo">
-                    <span class="small ml-1 d-md-down-none">用户</span>
+                    <img src="/EduManagement/v0.2/imgs/avatar-1.png" class="avatar avatar-sm" alt="logo">
+                    <span class="small ml-1 d-md-down-none">${user}</span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
@@ -244,11 +244,11 @@
         </div>
     </div>
 </div>
-<script src="./vendor/jquery/jquery.min.js"></script>
-<script src="./vendor/popper.js/popper.min.js"></script>
-<script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="./vendor/chart.js/chart.min.js"></script>
-<script src="./js/carbon.js"></script>
-<script src="./js/demo.js"></script>
+<script src="http://localhost:8080/EduManagement/v0.2/vendor/jquery/jquery.min.js"></script>
+<script src="http://localhost:8080/EduManagement/v0.2/vendor/popper.js/popper.min.js"></script>
+<script src="http://localhost:8080/EduManagement/v0.2/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://localhost:8080/EduManagement/v0.2/vendor/chart.js/chart.min.js"></script>
+<script src="http://localhost:8080/EduManagement/v0.2/js/carbon.js"></script>
+<script src="http://localhost:8080/EduManagement/v0.2/js/demo.js"></script>
 </body>
 </html>

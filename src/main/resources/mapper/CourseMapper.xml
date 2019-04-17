@@ -9,4 +9,65 @@
     <result column="introduce" jdbcType="VARCHAR" property="introduce" />
   </resultMap>
 
+  <insert id="add" parameterType="cn.hhj.pojo.Course">
+    INSERT INTO course(
+      name,
+      hour,
+      type,
+      introduce
+    )VALUE(
+      #{name},
+      #{hour},
+      #{type},
+      #{introduce}
+    )
+  </insert>
+
+  <delete id="deleteById" parameterType="cn.hhj.pojo.Course">
+    DELETE
+    FROM course
+    WHERE id = #{id}
+  </delete>
+
+  <update id="update" parameterType="cn.hhj.pojo.Course">
+    UPDATE course
+    <set>
+      <if test="name != null">
+        name = #{name},
+      </if>
+      <if test="hour != null">
+        hour = #{hour},
+      </if>
+      <if test="type != null">
+        type = #{type},
+      </if>
+      <if test="introduce != null">
+        introduce = #{introduce}
+      </if>
+    </set>
+    WHERE id = #{id}
+  </update>
+
+  <select id="quire" resultType="cn.hhj.pojo.Course">
+    SELECT *
+    FROM course
+    <where>
+      <if test="id != null">
+        id = #{id}
+      </if>
+      <if test="name != null">
+        and name = #{name}
+      </if>
+      <if test="hour != null">
+        and hour = #{hour}
+      </if>
+      <if test="type != null">
+        and type = #{type}
+      </if>
+      <if test="introduce != null">
+        and introduce = #{introduce}
+      </if>
+    </where>
+  </select>
+
 </mapper>

@@ -11,7 +11,108 @@
     <result column="classroom" jdbcType="VARCHAR" property="classroom" />
     <result column="class_time" jdbcType="VARCHAR" property="classTime" />
     <result column="students_number" jdbcType="INTEGER" property="studentsNumber" />
-    <result column="Max_number" jdbcType="INTEGER" property="maxNumber" />
+    <result column="max_number" jdbcType="INTEGER" property="maxNumber" />
   </resultMap>
+
+  <insert id="add" parameterType="cn.hhj.pojo.TeachersCourse">
+    INSERT INTO teachers_course(
+      teachers_info_id,
+      course_id,
+      years,
+      semester,
+      class_id,
+      classroom,
+      class_time,
+      students_number,
+      max_number
+    )VALUE(
+      #{teachersInfoId},
+      #{courseId},
+      #{years},
+      #{semester},
+      #{classId},
+      #{classroom},
+      #{classTime},
+      #{studentsNumber},
+      #{maxNumber}
+    )
+  </insert>
+
+  <delete id="deleteById" parameterType="cn.hhj.pojo.TeachersCourse">
+    DELETE
+    FROM teachers_course
+    WHERE id = #{id}
+  </delete>
+
+  <update id="update" parameterType="cn.hhj.pojo.TeachersCourse">
+    UPDATE teachers_course
+    <set>
+      <if test="teachersInfoId != null">
+        teachers_info_id = #{teachersInfoId},
+      </if>
+      <if test="courseId != null">
+        course_id = #{courseId},
+      </if>
+      <if test="years != null">
+        years = #{years},
+      </if>
+      <if test="semester != null">
+        semester = #{semester},
+      </if>
+      <if test="classId != null">
+        classId = #{classId},
+      </if>
+      <if test="classroom != null">
+        classroom = #{classroom},
+      </if>
+      <if test="classTime != null">
+        class_time = #{classTime},
+      </if>
+      <if test="studentsNumber != null">
+        students_number = #{studentsNumber}
+      </if>
+      <if test="maxNumber != null">
+        max_number = #{maxNumber}
+      </if>
+    </set>
+    WHERE id = #{id}
+  </update>
+
+  <select id="quire" resultType="cn.hhj.pojo.TeachersCourse">
+    SELECT *
+    FROM teachers_course
+    <where>
+      <if test="id != null">
+        id = #{id}
+      </if>
+      <if test="teachersInfoId != null">
+        and teachers_info_id = #{teachersInfoId}
+      </if>
+      <if test="courseId != null">
+        and course_id = #{courseId}
+      </if>
+      <if test="years != null">
+        and years = #{years}
+      </if>
+      <if test="semester != null">
+        and semester = #{semester}
+      </if>
+      <if test="classId != null">
+        and class_id = #{classId}
+      </if>
+      <if test="classroom != null">
+        and classroom = #{classroom}
+      </if>
+      <if test="classTime != null">
+        and class_time = #{classTime}
+      </if>
+      <if test="studentsNumber != null">
+        and students_number = #{studentsNumber}
+      </if>
+      <if test="maxNumber != null">
+        and max_number = #{maxNumber}
+      </if>
+    </where>
+  </select>
 
 </mapper>
