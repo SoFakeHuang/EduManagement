@@ -16,7 +16,7 @@
                     <li class="nav-title">导航</li>
 
                     <li class="nav-item">
-                        <a href="index_admin.jsp" class="nav-link active">
+                        <a href="/EduManagement/v0.3/index_admin.jsp" class="nav-link active">
                             <i class="icon icon-speedometer"></i> 主页
                         </a>
                     </li>
@@ -28,7 +28,7 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="student_admin.jsp" class="nav-link">
+                                <a href="/EduManagement/v0.3/student_admin.jsp" class="nav-link">
                                     <i class="icon icon-target"></i> 学生管理
                                 </a>
                             </li>                 
@@ -42,7 +42,7 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="teacher_admin.jsp" class="nav-link">
+                                <a href="/EduManagement/v0.3/teacher_admin.jsp" class="nav-link">
                                     <i class="icon icon-target"></i> 教师管理
                                 </a>
                             </li>                 
@@ -56,7 +56,7 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="announcement_admin.jsp" class="nav-link">
+                                <a href="/EduManagement/v0.3/announcement_admin.jsp" class="nav-link">
                                     <i class="icon icon-target"></i> 公告管理
                                 </a>
                             </li>                 
@@ -70,7 +70,7 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="class_admin.jsp" class="nav-link">
+                                <a href="/EduManagement/v0.3/class_admin.jsp" class="nav-link">
                                     <i class="icon icon-target"></i> 班级管理
                                 </a>
                             </li>                 
@@ -84,7 +84,7 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="department_admin.jsp" class="nav-link active">
+                                <a href="/EduManagement/v0.3/department_admin.jsp" class="nav-link active">
                                     <i class="icon icon-target"></i> 学院管理
                                 </a>
                             </li>                 

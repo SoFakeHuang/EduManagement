@@ -15,7 +15,7 @@
                     <li class="nav-title">导航</li>
 
                     <li class="nav-item">
-                        <a href="index.jsp" class="nav-link">
+                        <a href="/EduManagement/v0.3/index.jsp" class="nav-link">
                             <i class="icon icon-speedometer"></i> 主页
                         </a>
                     </li>
@@ -27,13 +27,13 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="course.jsp" class="nav-link">
+                                <a href="/EduManagement/v0.3/course.jsp" class="nav-link">
                                     <i class="icon icon-target"></i> 学生课表查询
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="elcourse.jsp" class="nav-link">
+                                <a href="/EduManagement/v0.3/elcourse.jsp" class="nav-link">
                                     <i class="icon icon-target"></i> 自主选课
                                 </a>
                             </li>
@@ -47,13 +47,13 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="grade.jsp" class="nav-link active">
+                                <a href="/EduManagement/v0.3/grade.jsp" class="nav-link active">
                                     <i class="icon icon-energy"></i> 查询成绩
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="info.jsp" class="nav-link">
+                                <a href="/EduManagement/v0.3/info.jsp" class="nav-link">
                                     <i class="icon icon-energy"></i> 查询学籍信息
                                 </a>
                             </li>

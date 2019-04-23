@@ -16,7 +16,7 @@
                     <li class="nav-title">导航</li>
 
                     <li class="nav-item">
-                        <a href="index_teacher.jsp" class="nav-link">
+                        <a href="/EduManagement/v0.3/index_teacher.jsp" class="nav-link">
                             <i class="icon icon-speedometer"></i> 主页
                         </a>
                     </li>
@@ -28,7 +28,7 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">   
-                                <a href="grade_teacher.jsp" class="nav-link">
+                                <a href="/EduManagement/v0.3/grade_teacher.jsp" class="nav-link">
                                     <i class="icon icon-target"></i> 学生成绩操作
                                 </a>
                             </li>                 
@@ -36,7 +36,7 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">   
-                                <a href="course_teacher.jsp" class="nav-link active">
+                                <a href="/EduManagement/v0.3/course_teacher.jsp" class="nav-link active">
                                     <i class="icon icon-target"></i> 学生成绩录入
                                 </a>
                             </li>                 
@@ -51,13 +51,13 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="info_teacher.jsp" class="nav-link">
+                                <a href="/EduManagement/v0.3/info_teacher.jsp" class="nav-link">
                                     <i class="icon icon-energy"></i> 教师信息
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="info_teaQurey.jsp" class="nav-link">
+                                <a href="/EduManagement/v0.3/info_teaQurey.jsp" class="nav-link">
                                     <i class="icon icon-energy"></i> 学生和班级信息
                                 </a>
                             </li>
