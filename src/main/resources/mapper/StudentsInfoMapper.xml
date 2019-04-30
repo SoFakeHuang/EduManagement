@@ -12,7 +12,30 @@
     <result column="birthplace" jdbcType="VARCHAR" property="birthplace" />
     <result column="id_number" jdbcType="VARCHAR" property="idNumber" />
   </resultMap>
+  
+  <sql id="StudentsInfoColumn">
+      students_info.id AS "id",
+      students_info.name AS "name",
+      students_info.student_number AS "student_number",
+      students_info.class_id AS "class_id",
+      students_info.user_id AS "user_id",
+      students_info.sex AS "sex",
+      students_info.phone AS "phone",
+      students_info.birthplace AS "birthplace",
+      students_info.id_number AS id_number
+  </sql>
 
+  <resultMap id="StudentClassDepartmentMap" type="cn.hhj.po.StudentClassDepartmentPo" extends="BaseResultMap">
+    <association property="aClass" javaType="cn.hhj.pojo.Class">
+      <id column="class_id" property="id"/>
+      <result column="class_name" property="name"/>
+    </association>
+    <association property="department" javaType="cn.hhj.pojo.Department">
+      <id column="department_id" property="id"/>
+      <result column="department_name" property="name"/>
+    </association>
+  </resultMap>
+  
   <insert id="add" parameterType="cn.hhj.pojo.StudentsInfo">
     INSERT INTO students_info(
       name,
@@ -54,12 +77,13 @@
     WHERE id = #{id}
   </update>
 
-  <select id="quire" resultType="cn.hhj.pojo.StudentsInfo">
-    SELECT *
-    FROM students_info
+  <select id="quire" resultMap="StudentClassDepartmentMap">
+    SELECT
+      <include refid="StudentsInfoColumn"/>,class.name AS class_name,department.name AS department_name
+    FROM students_info,class,department
     <where>
       <if test="id != null">
-        id = #{id}
+        students_info.id = #{id}
       </if>
       <if test="name != null">
         and name = #{name}
@@ -85,6 +109,8 @@
       <if test="idNumber != null">
         and id_number = #{idNumber}
       </if>
+      AND students_info.class_id = class.id
+      AND class.department_id = department.id
     </where>
   </select>
 

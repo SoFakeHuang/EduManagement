@@ -1,6 +1,7 @@
 package cn.hhj.controller;
 
 import cn.hhj.ResponsResult;
+import cn.hhj.po.StudentClassDepartmentPo;
 import cn.hhj.pojo.StudentsInfo;
 import cn.hhj.service.StudentsInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +53,8 @@ public class StudentsInfoController extends BaseController{
     }
 
     @RequestMapping("/quire")
-    public ResponsResult<List<StudentsInfo>> quire(StudentsInfo StudentsInfo){
-        List<StudentsInfo> list = studentsInfoService.quire(StudentsInfo);
+    public ResponsResult<List<StudentClassDepartmentPo>> quire(StudentsInfo StudentsInfo){
+        List<StudentClassDepartmentPo> list = studentsInfoService.quire(StudentsInfo);
         return inbound(list,"查询成功");
     }
 }

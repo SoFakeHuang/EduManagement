@@ -1,5 +1,6 @@
 package cn.hhj.service;
 
+import cn.hhj.po.StudentClassDepartmentPo;
 import cn.hhj.pojo.StudentsInfo;
 
 import java.util.List;
@@ -13,5 +14,5 @@ public interface StudentsInfoService {
     public Integer add(StudentsInfo studentsInfo);
     public Integer deleteById(StudentsInfo studentsInfo);
     public Integer update(StudentsInfo studentsInfo);
-    public List<StudentsInfo> quire(StudentsInfo studentsInfo);
+    public List<StudentClassDepartmentPo> quire(StudentsInfo studentsInfo);
 }

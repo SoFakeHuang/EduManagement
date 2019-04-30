@@ -51,8 +51,10 @@ public class TestStudentsInfo {
     @Test
     public void quire(){
         StudentsInfo studentsInfo = new StudentsInfo();
-        studentsInfo.setId(2);
+        studentsInfo.setUserId(1);
 
+        System.out.println(studentsInfoMapper.quire(studentsInfo).get(0).getaClass().getName());
+        System.out.println(studentsInfoMapper.quire(studentsInfo).get(0).getDepartment().getName());
         System.out.println(studentsInfoMapper.quire(studentsInfo).get(0).getName());
     }
 }

@@ -1,7 +1,10 @@
 package cn.hhj.service.impl;
 
+import cn.hhj.mapper.StudentsInfoMapper;
+import cn.hhj.po.StudentClassDepartmentPo;
 import cn.hhj.pojo.StudentsInfo;
 import cn.hhj.service.StudentsInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,19 +16,23 @@ import java.util.List;
  */
 @Service("studentsInfoService")
 public class StudentsInfoServiceImpl implements StudentsInfoService {
+
+    @Autowired
+    private StudentsInfoMapper studentsInfoMapper;
+
     public Integer add(StudentsInfo studentsInfo) {
-        return null;
+        return studentsInfoMapper.add(studentsInfo);
     }
 
     public Integer deleteById(StudentsInfo studentsInfo) {
-        return null;
+        return studentsInfoMapper.deleteById(studentsInfo);
     }
 
     public Integer update(StudentsInfo studentsInfo) {
-        return null;
+        return studentsInfoMapper.update(studentsInfo);
     }
 
-    public List<StudentsInfo> quire(StudentsInfo studentsInfo) {
-        return null;
+    public List<StudentClassDepartmentPo> quire(StudentsInfo studentsInfo) {
+        return studentsInfoMapper.quire(studentsInfo);
     }
 }
