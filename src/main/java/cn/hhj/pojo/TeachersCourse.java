@@ -21,6 +21,8 @@ public class TeachersCourse {
 
     private Integer maxNumber;
 
+    private String week;
+
     public Integer getId() {
         return id;
     }
@@ -99,5 +101,13 @@ public class TeachersCourse {
 
     public void setMaxNumber(Integer maxNumber) {
         this.maxNumber = maxNumber;
+    }
+
+    public String getWeek() {
+        return week;
+    }
+
+    public void setWeek(String week) {
+        this.week = week;
     }
 }
