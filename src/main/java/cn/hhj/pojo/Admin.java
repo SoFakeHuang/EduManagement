@@ -7,7 +7,7 @@ public class Admin {
 
     private String phone;
 
-    private Integer userId;
+    private Integer user_id;
 
     public Integer getId() {
         return id;
@@ -33,11 +33,11 @@ public class Admin {
         this.phone = phone == null ? null : phone.trim();
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getUser_id() {
+        return user_id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 }

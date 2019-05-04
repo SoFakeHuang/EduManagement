@@ -3,23 +3,23 @@ package cn.hhj.pojo;
 public class TeachersCourse {
     private Integer id;
 
-    private Integer teachersInfoId;
+    private Integer teachers_infoId;
 
-    private Integer courseId;
+    private Integer course_id;
 
     private String years;
 
     private Integer semester;
 
-    private Integer classId;
+    private Integer class_id;
 
     private String classroom;
 
-    private String classTime;
+    private String class_time;
 
-    private Integer studentsNumber;
+    private Integer students_number;
 
-    private Integer maxNumber;
+    private Integer max_number;
 
     private String week;
 
@@ -31,20 +31,20 @@ public class TeachersCourse {
         this.id = id;
     }
 
-    public Integer getTeachersInfoId() {
-        return teachersInfoId;
+    public Integer getTeachers_info_id() {
+        return teachers_infoId;
     }
 
-    public void setTeachersInfoId(Integer teachersInfoId) {
-        this.teachersInfoId = teachersInfoId;
+    public void setTeachers_info_id(Integer teachers_infoId) {
+        this.teachers_infoId = teachers_infoId;
     }
 
-    public Integer getCourseId() {
-        return courseId;
+    public Integer getCourse_id() {
+        return course_id;
     }
 
-    public void setCourseId(Integer courseId) {
-        this.courseId = courseId;
+    public void setCourse_id(Integer course_id) {
+        this.course_id = course_id;
     }
 
     public String getYears() {
@@ -63,12 +63,12 @@ public class TeachersCourse {
         this.semester = semester;
     }
 
-    public Integer getClassId() {
-        return classId;
+    public Integer getClass_id() {
+        return class_id;
     }
 
-    public void setClassId(Integer classId) {
-        this.classId = classId;
+    public void setClass_id(Integer class_id) {
+        this.class_id = class_id;
     }
 
     public String getClassroom() {
@@ -79,28 +79,28 @@ public class TeachersCourse {
         this.classroom = classroom == null ? null : classroom.trim();
     }
 
-    public String getClassTime() {
-        return classTime;
+    public String getClass_time() {
+        return class_time;
     }
 
-    public void setClassTime(String classTime) {
-        this.classTime = classTime == null ? null : classTime.trim();
+    public void setClass_time(String class_time) {
+        this.class_time = class_time == null ? null : class_time.trim();
     }
 
-    public Integer getStudentsNumber() {
-        return studentsNumber;
+    public Integer getStudents_number() {
+        return students_number;
     }
 
-    public void setStudentsNumber(Integer studentsNumber) {
-        this.studentsNumber = studentsNumber;
+    public void setStudents_number(Integer students_number) {
+        this.students_number = students_number;
     }
 
-    public Integer getMaxNumber() {
-        return maxNumber;
+    public Integer getMax_number() {
+        return max_number;
     }
 
-    public void setMaxNumber(Integer maxNumber) {
-        this.maxNumber = maxNumber;
+    public void setMax_number(Integer max_number) {
+        this.max_number = max_number;
     }
 
     public String getWeek() {

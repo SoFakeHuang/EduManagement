@@ -4,13 +4,13 @@
   <resultMap id="BaseResultMap" type="cn.hhj.pojo.StudentsInfo">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="student_number" jdbcType="VARCHAR" property="studentNumber" />
-    <result column="class_id" jdbcType="INTEGER" property="classId" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="student_number" jdbcType="VARCHAR" property="student_number" />
+    <result column="class_id" jdbcType="INTEGER" property="class_id" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
     <result column="sex" jdbcType="VARCHAR" property="sex" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="birthplace" jdbcType="VARCHAR" property="birthplace" />
-    <result column="id_number" jdbcType="VARCHAR" property="idNumber" />
+    <result column="id_number" jdbcType="VARCHAR" property="id_number" />
   </resultMap>
   
   <sql id="StudentsInfoColumn">
@@ -48,13 +48,13 @@
       id_number
     )VALUE(
       #{name},
-      #{studentNumber},
-      #{classId},
-      #{userId},
+      #{student_number},
+      #{class_id},
+      #{user_id},
       #{sex},
       #{phone},
       #{birthplace},
-      #{idNumber}
+      #{id_number}
     )
   </insert>
 
@@ -67,13 +67,13 @@
   <update id="update" parameterType="cn.hhj.pojo.StudentsInfo">
     UPDATE students_info SET
       name = #{name},
-      student_number = #{studentNumber},
-      class_id = #{classId},
-      user_id = #{userId},
+      student_number = #{student_number},
+      class_id = #{class_id},
+      user_id = #{user_id},
       sex = #{sex},
       phone = #{phone},
       birthplace = #{birthplace},
-      id_number = #{idNumber}
+      id_number = #{id_number}
     WHERE id = #{id}
   </update>
 
@@ -88,14 +88,14 @@
       <if test="name != null">
         and name = #{name}
       </if>
-      <if test="studentNumber != null">
-        and student_number = #{studentNumber}
+      <if test="student_number != null">
+        and student_number = #{student_number}
       </if>
-      <if test="classId != null">
-        and class_id = #{classId}
+      <if test="class_id != null">
+        and class_id = #{class_id}
       </if>
-      <if test="userId != null">
-        and user_id = #{userId}
+      <if test="user_id != null">
+        and user_id = #{user_id}
       </if>
       <if test="sex != null">
         and sex = #{sex}
@@ -106,8 +106,8 @@
       <if test="birthplace != null">
         and birthplace = #{birthplace}
       </if>
-      <if test="idNumber != null">
-        and id_number = #{idNumber}
+      <if test="id_number != null">
+        and id_number = #{id_number}
       </if>
       AND students_info.class_id = class.id
       AND class.department_id = department.id

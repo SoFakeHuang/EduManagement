@@ -4,11 +4,11 @@
   <resultMap id="BaseResultMap" type="cn.hhj.pojo.TeachersInfo">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="department_id" jdbcType="INTEGER" property="department_id" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
     <result column="sex" jdbcType="VARCHAR" property="sex" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="teacher_number" jdbcType="VARCHAR" property="teacherNumber" />
+    <result column="teacher_number" jdbcType="VARCHAR" property="teacher_number" />
   </resultMap>
 
   <insert id="add" parameterType="cn.hhj.pojo.TeachersInfo">
@@ -21,11 +21,11 @@
       teacher_number
     )VALUE(
       #{name},
-      #{departmentId},
-      #{userId},
+      #{department_id},
+      #{user_id},
       #{sex},
       #{phone},
-      #{teacherNumber}
+      #{teacher_number}
     )
   </insert>
 
@@ -41,8 +41,8 @@
       <if test="name != null">
         name = #{name},
       </if>
-      <if test="departmentId != null">
-        department_id = #{departmentId},
+      <if test="department_id != null">
+        department_id = #{department_id},
       </if>
       <if test="sex != null">
         sex = #{sex},
@@ -50,8 +50,8 @@
       <if test="phone != null">
         phone = #{phone},
       </if>
-      <if test="teacherNumber != null">
-        teacher_number = #{teacherNumber}
+      <if test="teacher_number != null">
+        teacher_number = #{teacher_number}
       </if>
     </set>
     WHERE id = #{id}
@@ -67,11 +67,11 @@
       <if test="name != null">
         and name = #{name}
       </if>
-      <if test="departmentId != null">
-        and department_id = #{departmentId}
+      <if test="department_id != null">
+        and department_id = #{department_id}
       </if>
-      <if test="userId != null">
-        and user_id = #{userId}
+      <if test="user_id != null">
+        and user_id = #{user_id}
       </if>
       <if test="sex != null">
         and sex = #{sex}
@@ -79,8 +79,8 @@
       <if test="phone != null">
         and phone = #{phone}
       </if>
-      <if test="teacherNumber != null">
-        and teacher_number = #{teacherNumber}
+      <if test="teacher_number != null">
+        and teacher_number = #{teacher_number}
       </if>
     </where>
   </select>

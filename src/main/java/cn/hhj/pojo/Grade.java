@@ -5,9 +5,9 @@ public class Grade {
 
     private Integer grade;
 
-    private Integer studentsInfoId;
+    private Integer students_info_id;
 
-    private Integer teachersCourseId;
+    private Integer teachers_course_id;
 
     public Integer getId() {
         return id;
@@ -25,19 +25,19 @@ public class Grade {
         this.grade = grade;
     }
 
-    public Integer getStudentsInfoId() {
-        return studentsInfoId;
+    public Integer getStudents_info_id() {
+        return students_info_id;
     }
 
-    public void setStudentsInfoId(Integer studentsInfoId) {
-        this.studentsInfoId = studentsInfoId;
+    public void setStudents_info_id(Integer students_infoId) {
+        this.students_info_id = students_infoId;
     }
 
-    public Integer getTeachersCourseId() {
-        return teachersCourseId;
+    public Integer getTeachers_course_id() {
+        return teachers_course_id;
     }
 
-    public void setTeachersCourseId(Integer teachersCourseId) {
-        this.teachersCourseId = teachersCourseId;
+    public void setTeachers_course_id(Integer teachers_courseId) {
+        this.teachers_course_id = teachers_courseId;
     }
 }

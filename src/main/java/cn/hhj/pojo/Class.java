@@ -5,11 +5,11 @@ public class Class {
 
     private String name;
 
-    private Integer studentsNumber;
+    private Integer students_number;
 
-    private Integer departmentId;
+    private Integer department_id;
 
-    private Integer headTeacher;
+    private Integer head_teacher;
 
     public Integer getId() {
         return id;
@@ -27,27 +27,27 @@ public class Class {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getStudentsNumber() {
-        return studentsNumber;
+    public Integer getStudents_number() {
+        return students_number;
     }
 
-    public void setStudentsNumber(Integer studentsNumber) {
-        this.studentsNumber = studentsNumber;
+    public void setStudents_number(Integer students_number) {
+        this.students_number = students_number;
     }
 
-    public Integer getDepartmentId() {
-        return departmentId;
+    public Integer getDepartment_id() {
+        return department_id;
     }
 
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartment_id(Integer department_id) {
+        this.department_id = department_id;
     }
 
-    public Integer getHeadTeacher() {
-        return headTeacher;
+    public Integer getHead_teacher() {
+        return head_teacher;
     }
 
-    public void setHeadTeacher(Integer headTeacher) {
-        this.headTeacher = headTeacher;
+    public void setHead_teacher(Integer head_teacher) {
+        this.head_teacher = head_teacher;
     }
 }

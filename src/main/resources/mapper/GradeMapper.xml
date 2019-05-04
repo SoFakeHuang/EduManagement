@@ -9,8 +9,8 @@
       teachers_course_id
     )VALUE(
       #{grade},
-      #{studentsInfoId},
-      #{teachersCourseId}
+      #{students_info_id},
+      #{teachers_course_id}
     )
   </insert>
 
@@ -26,11 +26,11 @@
         <if test="grade != null">
             grade = #{grade}
         </if>
-        <if test="studentsInfoId != null">
-            students_info_id = #{studentsInfoId}
+        <if test="students_info_id != null">
+            students_info_id = #{students_info_id}
         </if>
-        <if test="teachersCourseId != null">
-            teachers_course_id = #{teachersCourseId}
+        <if test="teachers_course_id != null">
+            teachers_course_id = #{teachers_course_id}
         </if>
     </set>
     WHERE id = #{id}
@@ -46,11 +46,11 @@
             <if test="grade != null">
                 and grade = #{grade}
             </if>
-            <if test="studentsInfoId != null">
-                and students_info_id = #{studentsInfoId}
+            <if test="students_info_id != null">
+                and students_info_id = #{students_info_id}
             </if>
-            <if test="teachersCourseId != null">
-                and teachers_course_id = #{teachersCourseId}
+            <if test="teachers_course_id != null">
+                and teachers_course_id = #{teachers_course_id}
             </if>
         </where>
     </select>

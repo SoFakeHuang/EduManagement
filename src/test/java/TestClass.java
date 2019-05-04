@@ -21,8 +21,8 @@ public class TestClass {
     public void add(){
         Class aClass = new Class();
         aClass.setName("计算机");
-        aClass.setStudentsNumber(60);
-        aClass.setDepartmentId(2);
+        aClass.setStudents_number(60);
+        aClass.setDepartment_id(2);
         classMapper.add(aClass);
     }
 

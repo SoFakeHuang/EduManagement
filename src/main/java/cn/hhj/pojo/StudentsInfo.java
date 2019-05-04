@@ -5,11 +5,11 @@ public class StudentsInfo {
 
     private String name;
 
-    private String studentNumber;
+    private String student_number;
 
-    private Integer classId;
+    private Integer class_id;
 
-    private Integer userId;
+    private Integer user_id;
 
     private String sex;
 
@@ -17,7 +17,7 @@ public class StudentsInfo {
 
     private String birthplace;
 
-    private String idNumber;
+    private String id_number;
 
     public Integer getId() {
         return id;
@@ -35,28 +35,28 @@ public class StudentsInfo {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getStudentNumber() {
-        return studentNumber;
+    public String getStudent_number() {
+        return student_number;
     }
 
-    public void setStudentNumber(String studentNumber) {
-        this.studentNumber = studentNumber == null ? null : studentNumber.trim();
+    public void setStudent_number(String student_number) {
+        this.student_number = student_number == null ? null : student_number.trim();
     }
 
-    public Integer getClassId() {
-        return classId;
+    public Integer getClass_id() {
+        return class_id;
     }
 
-    public void setClassId(Integer classId) {
-        this.classId = classId;
+    public void setClass_id(Integer class_id) {
+        this.class_id = class_id;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getUser_id() {
+        return user_id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 
     public String getSex() {
@@ -83,11 +83,11 @@ public class StudentsInfo {
         this.birthplace = birthplace == null ? null : birthplace.trim();
     }
 
-    public String getIdNumber() {
-        return idNumber;
+    public String getId_number() {
+        return id_number;
     }
 
-    public void setIdNumber(String idNumber) {
-        this.idNumber = idNumber == null ? null : idNumber.trim();
+    public void setId_number(String id_number) {
+        this.id_number = id_number == null ? null : id_number.trim();
     }
 }

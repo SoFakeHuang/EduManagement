@@ -21,8 +21,8 @@ public class TestGrade {
     public void add(){
         Grade grade = new Grade();
         grade.setGrade(80);
-        grade.setStudentsInfoId(2);
-        grade.setTeachersCourseId(1);
+        grade.setStudents_info_id(2);
+        grade.setTeachers_course_id(1);
         gradeMapper.add(grade);
     }
 
@@ -44,7 +44,7 @@ public class TestGrade {
     @Test
     public void quire(){
         Grade grade = new Grade();
-        grade.setStudentsInfoId(2);
+        grade.setStudents_info_id(2);
         System.out.println(gradeMapper.quire(grade).get(0).getGrade());
     }
 }

@@ -4,9 +4,9 @@
   <resultMap id="BaseResultMap" type="cn.hhj.pojo.Class">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="students_number" jdbcType="INTEGER" property="studentsNumber" />
-    <result column="class_id" jdbcType="INTEGER" property="classId" />
-    <result column="head_teacher" jdbcType="INTEGER" property="headTeacher" />
+    <result column="students_number" jdbcType="INTEGER" property="students_number" />
+    <result column="class_id" jdbcType="INTEGER" property="class_id" />
+    <result column="head_teacher" jdbcType="INTEGER" property="head_teacher" />
   </resultMap>
 
   <insert id="add" parameterType="cn.hhj.pojo.Class">
@@ -17,9 +17,9 @@
       head_teacher
     )VALUE(
       #{name},
-      #{studentsNumber},
-      #{departmentId},
-      #{headTeacher}
+      #{students_number},
+      #{department_id},
+      #{head_teacher}
     )
   </insert>
 
@@ -32,9 +32,9 @@
   <update id="update" parameterType="cn.hhj.pojo.Class">
     UPDATE class SET
       name = #{name},
-      students_number = #{studentsNumber},
-      department_id = #{departmentId},
-      head_teacher = #{headTeacher}
+      students_number = #{students_number},
+      department_id = #{department_id},
+      head_teacher = #{head_teacher}
     WHERE id = #{id}
   </update>
 
@@ -48,14 +48,14 @@
       <if test="name != null">
         and name = #{name}
       </if>
-      <if test="studentsNumber != null">
-        and students_number = #{studentsNumber}
+      <if test="students_number != null">
+        and students_number = #{students_number}
       </if>
-      <if test="departmentId != null">
-        and department_id = #{departmentId}
+      <if test="department_id != null">
+        and department_id = #{department_id}
       </if>
-      <if test="headTeacher != null">
-        and head_teacher = #{headTeacher}
+      <if test="head_teacher != null">
+        and head_teacher = #{head_teacher}
       </if>
     </where>
   </select>

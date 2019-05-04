@@ -3,15 +3,15 @@
 <mapper namespace="cn.hhj.mapper.TeachersCourseMapper">
   <resultMap id="BaseResultMap" type="cn.hhj.pojo.TeachersCourse">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="teachers_info_id" jdbcType="INTEGER" property="teachersInfoId" />
-    <result column="course_id" jdbcType="INTEGER" property="courseId" />
+    <result column="teachers_info_id" jdbcType="INTEGER" property="teachers_info_id" />
+    <result column="course_id" jdbcType="INTEGER" property="course_id" />
     <result column="years" jdbcType="VARCHAR" property="years" />
     <result column="semester" jdbcType="INTEGER" property="semester" />
-    <result column="class_id" jdbcType="INTEGER" property="classId" />
+    <result column="class_id" jdbcType="INTEGER" property="class_id" />
     <result column="classroom" jdbcType="VARCHAR" property="classroom" />
-    <result column="class_time" jdbcType="VARCHAR" property="classTime" />
-    <result column="students_number" jdbcType="INTEGER" property="studentsNumber" />
-    <result column="max_number" jdbcType="INTEGER" property="maxNumber" />
+    <result column="class_time" jdbcType="VARCHAR" property="class_time" />
+    <result column="students_number" jdbcType="INTEGER" property="students_number" />
+    <result column="max_number" jdbcType="INTEGER" property="max_number" />
     <result column="week" jdbcType="VARCHAR" property="week" />
   </resultMap>
 
@@ -28,15 +28,15 @@
       max_number,
       week
     )VALUE(
-      #{teachersInfoId},
-      #{courseId},
+      #{teachers_info_id},
+      #{course_id},
       #{years},
       #{semester},
-      #{classId},
+      #{class_id},
       #{classroom},
-      #{classTime},
-      #{studentsNumber},
-      #{maxNumber},
+      #{class_time},
+      #{students_number},
+      #{max_number},
       #{week}
     )
   </insert>
@@ -50,11 +50,11 @@
   <update id="update" parameterType="cn.hhj.pojo.TeachersCourse">
     UPDATE teachers_course
     <set>
-      <if test="teachersInfoId != null">
-        teachers_info_id = #{teachersInfoId},
+      <if test="teachers_info_id != null">
+        teachers_info_id = #{teachers_info_id},
       </if>
-      <if test="courseId != null">
-        course_id = #{courseId},
+      <if test="course_id != null">
+        course_id = #{course_id},
       </if>
       <if test="years != null">
         years = #{years},
@@ -62,20 +62,20 @@
       <if test="semester != null">
         semester = #{semester},
       </if>
-      <if test="classId != null">
-        classId = #{classId},
+      <if test="class_id != null">
+        class_id = #{class_id},
       </if>
       <if test="classroom != null">
         classroom = #{classroom},
       </if>
-      <if test="classTime != null">
-        class_time = #{classTime},
+      <if test="class_time != null">
+        class_time = #{class_time},
       </if>
-      <if test="studentsNumber != null">
-        students_number = #{studentsNumber}
+      <if test="students_number != null">
+        students_number = #{students_number}
       </if>
-      <if test="maxNumber != null">
-        max_number = #{maxNumber}
+      <if test="max_number != null">
+        max_number = #{max_number}
       </if>
       <if test="week != null">
         week = #{week}
@@ -91,11 +91,11 @@
       <if test="id != null">
         id = #{id}
       </if>
-      <if test="teachersInfoId != null">
-        and teachers_info_id = #{teachersInfoId}
+      <if test="teachers_info_id != null">
+        and teachers_info_id = #{teachers_info_id}
       </if>
-      <if test="courseId != null">
-        and course_id = #{courseId}
+      <if test="course_id != null">
+        and course_id = #{course_id}
       </if>
       <if test="years != null">
         and years = #{years}
@@ -103,20 +103,20 @@
       <if test="semester != null">
         and semester = #{semester}
       </if>
-      <if test="classId != null">
-        and class_id = #{classId}
+      <if test="class_id != null">
+        and class_id = #{class_id}
       </if>
       <if test="classroom != null">
         and classroom = #{classroom}
       </if>
-      <if test="classTime != null">
-        and class_time = #{classTime}
+      <if test="class_time != null">
+        and class_time = #{class_time}
       </if>
-      <if test="studentsNumber != null">
-        and students_number = #{studentsNumber}
+      <if test="students_number != null">
+        and students_number = #{students_number}
       </if>
-      <if test="maxNumber != null">
-        and max_number = #{maxNumber}
+      <if test="max_number != null">
+        and max_number = #{max_number}
       </if>
       <if test="week != null">
         and week = #{week}

@@ -5,15 +5,15 @@ public class TeachersInfo {
 
     private String name;
 
-    private Integer departmentId;
+    private Integer department_id;
 
-    private Integer userId;
+    private Integer user_id;
 
     private String sex;
 
     private String phone;
 
-    private String teacherNumber;
+    private String teacher_number;
 
     public Integer getId() {
         return id;
@@ -31,20 +31,20 @@ public class TeachersInfo {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getDepartmentId() {
-        return departmentId;
+    public Integer getDepartment_id() {
+        return department_id;
     }
 
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartment_id(Integer department_id) {
+        this.department_id = department_id;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getUser_id() {
+        return user_id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 
     public String getSex() {
@@ -64,10 +64,10 @@ public class TeachersInfo {
     }
 
     public String getTeacherNumber() {
-        return teacherNumber;
+        return teacher_number;
     }
 
-    public void setTeacherNumber(String teacherNumber) {
-        this.teacherNumber = teacherNumber == null ? null : teacherNumber.trim();
+    public void setTeacher_number(String teacher_number) {
+        this.teacher_number = teacher_number == null ? null : teacher_number.trim();
     }
 }

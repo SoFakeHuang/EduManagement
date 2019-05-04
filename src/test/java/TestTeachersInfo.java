@@ -21,8 +21,8 @@ public class TestTeachersInfo {
     public void add(){
         TeachersInfo teachersInfo = new TeachersInfo();
         teachersInfo.setName("惠咸");
-        teachersInfo.setDepartmentId(2);
-        teachersInfo.setUserId(2);
+        teachersInfo.setDepartment_id(2);
+        teachersInfo.setUser_id(2);
         teachersInfo.setSex("女");
         teachersInfoMapper.add(teachersInfo);
     }
@@ -39,7 +39,7 @@ public class TestTeachersInfo {
         TeachersInfo teachersInfo = new TeachersInfo();
         teachersInfo.setId(2);
         teachersInfo.setPhone("15305855229");
-        teachersInfo.setTeacherNumber("001");
+        teachersInfo.setTeacher_number("001");
         teachersInfoMapper.update(teachersInfo);
     }
 

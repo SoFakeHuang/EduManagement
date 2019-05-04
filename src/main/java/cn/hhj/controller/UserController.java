@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -36,7 +37,7 @@ public class UserController extends BaseController{
      * @param session
      * @return
      */
-    @RequestMapping("/login")
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String login(User user, Model model, HttpSession session){
         if(user.getAccount() == null || user.getPassword() == null)
             return "redirect:/login/login.jsp";
@@ -55,7 +56,7 @@ public class UserController extends BaseController{
                     return "index_teacher";
                 case 2:
                     StudentsInfo studentsInfo = new StudentsInfo();
-                    studentsInfo.setUserId(userList.get(0).getId());
+                    studentsInfo.setUser_id(userList.get(0).getId());
                     //查询基础信息并存入model
                     model.addAttribute("studentClassDepartmentPo",studentsInfoService.quire(studentsInfo).get(0));
                     return "index";
@@ -70,20 +71,19 @@ public class UserController extends BaseController{
     }
 
     @RequestMapping("/indexInfo")
-    @ResponseBody
-    public ResponsResult indexInfo(HttpSession session){
+    public String indexInfo(HttpSession session, Model model){
         User user = (User)session.getAttribute(BaseInfo.USER);
-        if(user == null)
-            return inbound(null,"用户会话为空");
         Object userInfo = userService.quireUserInfo(user);
         switch (user.getType()){
             case 0:
             case 1:
             case 2:
                 StudentClassDepartmentPo studentClassDepartmentPo = (StudentClassDepartmentPo)userInfo;
-                return inbound(studentClassDepartmentPo,"学生首页基本信息查询成功");
+                model.addAttribute("studentClassDepartmentPo",studentClassDepartmentPo);
+                return "index";
             default:
-                return inbound(null,"用户类型错误");
+                return "redirect:/login/login.jsp";
         }
     }
+
 }

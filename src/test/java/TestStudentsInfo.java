@@ -24,8 +24,8 @@ public class TestStudentsInfo {
     public void add(){
         StudentsInfo studentsInfo = new StudentsInfo();
         studentsInfo.setName("王五");
-        studentsInfo.setStudentNumber("1620502159");
-        studentsInfo.setUserId(1);
+        studentsInfo.setStudent_number("1620502159");
+        studentsInfo.setUser_id(1);
         studentsInfo.setSex("男");
         studentsInfoMapper.add(studentsInfo);
     }
@@ -42,8 +42,8 @@ public class TestStudentsInfo {
         StudentsInfo studentsInfo = new StudentsInfo();
         studentsInfo.setId(2);
         studentsInfo.setName("王");
-        studentsInfo.setStudentNumber("1620502151");
-        studentsInfo.setUserId(1);
+        studentsInfo.setStudent_number("1620502151");
+        studentsInfo.setUser_id(1);
         studentsInfo.setSex("男");
         studentsInfoMapper.update(studentsInfo);
     }
@@ -51,7 +51,7 @@ public class TestStudentsInfo {
     @Test
     public void quire(){
         StudentsInfo studentsInfo = new StudentsInfo();
-        studentsInfo.setUserId(1);
+        studentsInfo.setUser_id(1);
 
         System.out.println(studentsInfoMapper.quire(studentsInfo).get(0).getaClass().getName());
         System.out.println(studentsInfoMapper.quire(studentsInfo).get(0).getDepartment().getName());

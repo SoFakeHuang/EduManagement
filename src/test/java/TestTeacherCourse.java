@@ -20,15 +20,15 @@ public class TestTeacherCourse {
     @Test
     public void add(){
         TeachersCourse teachersInfo = new TeachersCourse();
-        teachersInfo.setCourseId(2);
-        teachersInfo.setTeachersInfoId(2);
+        teachersInfo.setCourse_id(2);
+        teachersInfo.setTeachers_info_id(2);
         teachersInfo.setYears("2018-2019");
         teachersInfo.setSemester(2);
-        teachersInfo.setClassId(5);
+        teachersInfo.setClass_id(5);
         teachersInfo.setClassroom("3301");
-        teachersInfo.setClassTime("星期二 1-3节");
-        teachersInfo.setStudentsNumber(60);
-        teachersInfo.setMaxNumber(130);
+        teachersInfo.setClass_time("星期二 1-3节");
+        teachersInfo.setStudents_number(60);
+        teachersInfo.setMax_number(130);
         teachersCourseMapper.add(teachersInfo);
     }
 
@@ -43,14 +43,14 @@ public class TestTeacherCourse {
     public void update(){
         TeachersCourse teachersInfo = new TeachersCourse();
         teachersInfo.setId(1);
-        teachersInfo.setMaxNumber(200);
+        teachersInfo.setMax_number(200);
         teachersCourseMapper.update(teachersInfo);
     }
 
     @Test
     public void quire(){
         TeachersCourse teachersInfo = new TeachersCourse();
-        teachersInfo.setClassId(5);
+        teachersInfo.setClass_id(5);
         System.out.println(teachersCourseMapper.quire(teachersInfo).get(0).getClassroom());
     }
 }
