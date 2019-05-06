@@ -1,6 +1,15 @@
-package cn.hhj.pojo;
+package cn.hhj.po;
 
-public class TeachersCourse {
+import cn.hhj.pojo.Class;
+import cn.hhj.pojo.Course;
+import cn.hhj.pojo.TeachersInfo;
+
+/**
+ * @Author: SoFakeHuang
+ * @Date: 2019/5/5 10:38
+ * @Version 1.0
+ */
+public class TeacherCourseClassPo {
     private Integer id;
 
     private Integer teachers_info_id;
@@ -22,6 +31,12 @@ public class TeachersCourse {
     private Integer max_number;
 
     private Integer week;
+
+    private Course course;
+
+    private TeachersInfo teachersInfo;
+
+    private Class aClass;
 
     public Integer getId() {
         return id;
@@ -52,7 +67,7 @@ public class TeachersCourse {
     }
 
     public void setYears(String years) {
-        this.years = years == null ? null : years.trim();
+        this.years = years;
     }
 
     public Integer getSemester() {
@@ -76,7 +91,7 @@ public class TeachersCourse {
     }
 
     public void setClassroom(String classroom) {
-        this.classroom = classroom == null ? null : classroom.trim();
+        this.classroom = classroom;
     }
 
     public String getClass_time() {
@@ -84,7 +99,7 @@ public class TeachersCourse {
     }
 
     public void setClass_time(String class_time) {
-        this.class_time = class_time == null ? null : class_time.trim();
+        this.class_time = class_time;
     }
 
     public Integer getStudents_number() {
@@ -109,5 +124,29 @@ public class TeachersCourse {
 
     public void setWeek(Integer week) {
         this.week = week;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public TeachersInfo getTeachersInfo() {
+        return teachersInfo;
+    }
+
+    public void setTeachersInfo(TeachersInfo teachersInfo) {
+        this.teachersInfo = teachersInfo;
+    }
+
+    public Class getaClass() {
+        return aClass;
+    }
+
+    public void setaClass(Class aClass) {
+        this.aClass = aClass;
     }
 }

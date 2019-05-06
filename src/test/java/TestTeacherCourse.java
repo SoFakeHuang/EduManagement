@@ -1,4 +1,5 @@
 import cn.hhj.mapper.TeachersCourseMapper;
+import cn.hhj.po.TeacherCourseClassPo;
 import cn.hhj.pojo.TeachersCourse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -52,5 +53,14 @@ public class TestTeacherCourse {
         TeachersCourse teachersInfo = new TeachersCourse();
         teachersInfo.setClass_id(5);
         System.out.println(teachersCourseMapper.quire(teachersInfo).get(0).getClassroom());
+    }
+
+    @Test
+    public void jointQuire(){
+        TeachersCourse teachersInfo = new TeachersCourse();
+        teachersInfo.setClass_id(5);
+        for(TeacherCourseClassPo teacherCourseClassPo : teachersCourseMapper.jointQuire(teachersInfo)){
+            System.out.println(teacherCourseClassPo.getCourse().getName());
+        }
     }
 }

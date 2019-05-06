@@ -2,6 +2,7 @@ package cn.hhj.controller;
 
 import cn.hhj.ResponsResult;
 import cn.hhj.mapper.ClassMapper;
+import cn.hhj.po.TeacherCourseClassPo;
 import cn.hhj.pojo.Class;
 import cn.hhj.pojo.TeachersCourse;
 import cn.hhj.service.TeachersCourseService;
@@ -31,14 +32,14 @@ public class TeachersCourseController extends BaseController{
 
     @RequestMapping("/list")
     @ResponseBody
-    public ResponsResult<List<TeachersCourse>> list(@RequestBody String className){
+    public ResponsResult<List<TeacherCourseClassPo>> list(@RequestBody String className){
         Class aClass = new Class();
         aClass.setName(className);
         List<Class> classList = classMapper.quire(aClass);
         if(classList.size() != 1)
             return failHandler("班级名不存在或存在多个");
 
-        List<TeachersCourse> courseList = teachersCourseService.quireByClassId(classList.get(0).getId());
+        List<TeacherCourseClassPo> courseList = teachersCourseService.jointQuire(classList.get(0).getId());
 
         return inbound(courseList,"查询成功");
     }

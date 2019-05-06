@@ -14,7 +14,39 @@
     <result column="max_number" jdbcType="INTEGER" property="max_number" />
     <result column="week" jdbcType="VARCHAR" property="week" />
   </resultMap>
+  
+  <resultMap id="TeacherCourseClassMap" type="cn.hhj.po.TeacherCourseClassPo" extends="BaseResultMap">
+    <association property="course" javaType="cn.hhj.pojo.Course">
+      <id column="course_id" property="id"/>
+      <result column="course_name" property="name"/>
+    </association>
 
+    <association property="teachersInfo" javaType="cn.hhj.pojo.TeachersInfo">
+      <id column="teachers_info_id" property="id"/>
+      <result column="teachers_info_name" property="name"/>
+    </association>
+
+    <association property="aClass" javaType="cn.hhj.pojo.Class">
+      <id column="class_id" property="id"/>
+      <result column="class_name" property="name"/>
+      <result column="class_students_number" property="students_number"/>
+    </association>
+  </resultMap>
+
+  <sql id="TeachersCourseColumn">
+    teachers_course.id,
+    teachers_info_id,
+    course_id,
+    years,
+    semester,
+    class_id,
+    classroom,
+    class_time,
+    teachers_course.students_number,
+    max_number,
+    week
+  </sql>
+  
   <insert id="add" parameterType="cn.hhj.pojo.TeachersCourse">
     INSERT INTO teachers_course(
       teachers_info_id,
@@ -122,6 +154,52 @@
         and week = #{week}
       </if>
     </where>
+  </select>
+
+  <select id="jointQuire" resultMap="TeacherCourseClassMap">
+    SELECT <include refid="TeachersCourseColumn"/>,
+    course.name AS course_name,
+    teachers_info.name AS teachers_info_name,
+    class.name AS class_name,
+    class.students_number AS class_students_number
+    FROM class,course,teachers_course,teachers_info
+    <where>
+      <if test="id != null">
+        id = #{id}
+      </if>
+      <if test="teachers_info_id != null">
+        and teachers_info_id = #{teachers_info_id}
+      </if>
+      <if test="course_id != null">
+        and course_id = #{course_id}
+      </if>
+      <if test="years != null">
+        and years = #{years}
+      </if>
+      <if test="semester != null">
+        and semester = #{semester}
+      </if>
+      <if test="class_id != null">
+        and class_id = #{class_id}
+      </if>
+      <if test="classroom != null">
+        and classroom = #{classroom}
+      </if>
+      <if test="class_time != null">
+        and class_time = #{class_time}
+      </if>
+      <if test="students_number != null">
+        and students_number = #{students_number}
+      </if>
+      <if test="max_number != null">
+        and max_number = #{max_number}
+      </if>
+      <if test="week != null">
+        and week = #{week}
+      </if>
+      AND class_id = class.id AND teachers_info_id = teachers_info.id AND course_id = course.id
+    </where>
+    ORDER BY week
   </select>
 
 </mapper>
