@@ -97,7 +97,7 @@
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td>美学原理</td>
+                                            <td>${courseList.get(0).course.name}</td>
                                             <td>网课</td>
                                             <td>
                                                 <button id="confirm" class="btn btn-outline-primary" data-toggle="modal"

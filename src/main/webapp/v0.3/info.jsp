@@ -33,7 +33,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="/EduManagement/v0.3/info.jsp" class="nav-link active">
+                        <a href="/EduManagement/studentsInfo/quireInfo" class="nav-link active">
                             <i class="icon icon-energy"></i> 查询学籍信息
                         </a>
                     </li>
@@ -68,9 +68,9 @@
 
                                             <div class="card-body bg-info">
                                                 <ul>
-                                                    <li>学号：516556</li>
-                                                    <li>姓名:</li>
-                                                    <li>性别</li>
+                                                    <li>学号：${studentClassDepartmentPo.student_number}</li>
+                                                    <li>姓名: ${studentClassDepartmentPo.name}</li>
+                                                    <li>性别: ${studentClassDepartmentPo.sex}</li>
                                                     <li>用户组</li>
                                                 </ul>
                                             </div>
@@ -85,9 +85,9 @@
 
                                             <div class="card-body bg-primary">
                                                 <ul>
-                                                    <li>电话号码：</li>
-                                                    <li>籍贯：</li>
-                                                    <li>身份证号码：</li>
+                                                    <li>电话号码：${studentClassDepartmentPo.phone}</li>
+                                                    <li>籍贯：${studentClassDepartmentPo.birthplace}</li>
+                                                    <li>身份证号码：${studentClassDepartmentPo.id_number}</li>
                                                 </ul>
                                             </div>
                                         </div>

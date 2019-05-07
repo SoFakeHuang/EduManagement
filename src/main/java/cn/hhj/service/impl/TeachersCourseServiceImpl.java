@@ -2,6 +2,7 @@ package cn.hhj.service.impl;
 
 import cn.hhj.mapper.TeachersCourseMapper;
 import cn.hhj.po.TeacherCourseClassPo;
+import cn.hhj.pojo.Course;
 import cn.hhj.pojo.TeachersCourse;
 import cn.hhj.service.TeachersCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,9 +43,11 @@ public class TeachersCourseServiceImpl implements TeachersCourseService {
         return teachersCourseMapper.quire(teachersCourse);
     }
 
-    public List<TeacherCourseClassPo> jointQuire(Integer classId) {
-        TeachersCourse teachersCourse = new TeachersCourse();
-        teachersCourse.setClass_id(classId);
+    public List<TeacherCourseClassPo> jointQuire(TeachersCourse teachersCourse) {
         return teachersCourseMapper.jointQuire(teachersCourse);
+    }
+
+    public List<TeacherCourseClassPo> courseListQuire(TeachersCourse teachersCourse,Course course) {
+        return teachersCourseMapper.courseListQuire(teachersCourse,course);
     }
 }

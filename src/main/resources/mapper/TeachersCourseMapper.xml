@@ -44,7 +44,8 @@
     class_time,
     teachers_course.students_number,
     max_number,
-    week
+    week,
+    full
   </sql>
   
   <insert id="add" parameterType="cn.hhj.pojo.TeachersCourse">
@@ -153,6 +154,9 @@
       <if test="week != null">
         and week = #{week}
       </if>
+      <if test="full != null">
+        and full = #{full}
+      </if>
     </where>
   </select>
 
@@ -197,9 +201,63 @@
       <if test="week != null">
         and week = #{week}
       </if>
+      <if test="full != null">
+        and full = #{full}
+      </if>
       AND class_id = class.id AND teachers_info_id = teachers_info.id AND course_id = course.id
     </where>
     ORDER BY week
   </select>
+
+    <select id="courseListQuire" resultMap="TeacherCourseClassMap">
+    SELECT <include refid="TeachersCourseColumn"/>,
+    course.name AS course_name,
+    teachers_info.name AS teachers_info_nameteachersCourse
+    FROM course,teachers_course,teachers_info
+    <where>
+      <if test="teachersCourse.id != null">
+        id = #{teachersCourse.id}
+      </if>
+      <if test="teachersCourse.teachers_info_id != null">
+        and teachers_info_id = #{teachersCourse.teachers_info_id}
+      </if>
+      <if test="teachersCourse.course_id != null">
+        and course_id = #{teachersCourse.course_id}
+      </if>
+      <if test="teachersCourse.years != null">
+        and years = #{teachersCourse.years}
+      </if>
+      <if test="teachersCourse.semester != null">
+        and semester = #{teachersCourse.semester}
+      </if>
+      <if test="teachersCourse.class_id != null">
+        and class_id = #{teachersCourse.class_id}
+      </if>
+      <if test="teachersCourse.classroom != null">
+        and classroom = #{teachersCourse.classroom}
+      </if>
+      <if test="teachersCourse.class_time != null">
+        and class_time = #{teachersCourse.class_time}
+      </if>
+      <if test="teachersCourse.students_number != null">
+        and students_number = #{teachersCourse.students_number}
+      </if>
+      <if test="teachersCourse.max_number != null">
+        and max_number = #{teachersCourse.max_number}
+      </if>
+      <if test="teachersCourse.week != null">
+        and week = #{teachersCourse.week}
+      </if>
+      <if test="teachersCourse.full != null">
+        and full = #{teachersCourse.full}
+      </if>
+      AND teachers_info_id = teachers_info.id AND course_id = course.id
+      <if test="course.type != null">
+        AND course.type = '${course.type}'
+      </if>
+
+    </where>
+    ORDER BY week
+    </select>
 
 </mapper>

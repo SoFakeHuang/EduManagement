@@ -23,6 +23,8 @@ public class TeachersCourse {
 
     private Integer week;
 
+    private Integer full;
+
     public Integer getId() {
         return id;
     }
@@ -109,5 +111,13 @@ public class TeachersCourse {
 
     public void setWeek(Integer week) {
         this.week = week;
+    }
+
+    public Integer getFull() {
+        return full;
+    }
+
+    public void setFull(Integer full) {
+        this.full = full;
     }
 }

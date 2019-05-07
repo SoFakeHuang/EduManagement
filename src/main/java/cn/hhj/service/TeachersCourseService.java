@@ -1,6 +1,7 @@
 package cn.hhj.service;
 
 import cn.hhj.po.TeacherCourseClassPo;
+import cn.hhj.pojo.Course;
 import cn.hhj.pojo.TeachersCourse;
 
 import java.util.List;
@@ -16,5 +17,6 @@ public interface TeachersCourseService {
     Integer update(TeachersCourse teachersCourse);
     List<TeachersCourse> quire(TeachersCourse teachersCourse);
     List<TeachersCourse> quireByClassId(Integer classId);
-    List<TeacherCourseClassPo> jointQuire(Integer classId);
+    List<TeacherCourseClassPo> jointQuire(TeachersCourse teachersCourse);
+    List<TeacherCourseClassPo> courseListQuire(TeachersCourse teachersCourse, Course course);
 }

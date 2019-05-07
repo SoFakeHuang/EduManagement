@@ -45,7 +45,7 @@ public class UserController extends BaseController{
         //账号密码正确且只有一个用户
         if(userList.size() == 1){
             //账号密码正确，将用户信息存入session，用于后续用户相关操作
-            session.setAttribute("user", userList.get(0));
+            session.setAttribute(BaseInfo.USER, userList.get(0));
             //返回成功信息
             model.addAttribute("msg",BaseInfo.SUCCESS);
             //根据用户类型返回对应页面，并查询基础信息

@@ -1,13 +1,17 @@
 package cn.hhj.controller;
 
+import cn.hhj.BaseInfo;
 import cn.hhj.ResponsResult;
 import cn.hhj.po.StudentClassDepartmentPo;
 import cn.hhj.pojo.StudentsInfo;
+import cn.hhj.pojo.User;
 import cn.hhj.service.StudentsInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -52,9 +56,15 @@ public class StudentsInfoController extends BaseController{
         }
     }
 
-    @RequestMapping("/quire")
-    public ResponsResult<List<StudentClassDepartmentPo>> quire(StudentsInfo StudentsInfo){
-        List<StudentClassDepartmentPo> list = studentsInfoService.quire(StudentsInfo);
-        return inbound(list,"查询成功");
+    @RequestMapping("/quireInfo")
+    public String quire(HttpSession session, Model model){
+        User user = (User)session.getAttribute(BaseInfo.USER);
+        if(null == user)
+            return "error";
+        StudentsInfo studentsInfo = new StudentsInfo();
+        studentsInfo.setUser_id(user.getId());
+        List<StudentClassDepartmentPo> list = studentsInfoService.quire(studentsInfo);
+        model.addAttribute("studentClassDepartmentPo",list.get(0));
+        return "info";
     }
 }

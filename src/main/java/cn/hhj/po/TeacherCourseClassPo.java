@@ -32,6 +32,8 @@ public class TeacherCourseClassPo {
 
     private Integer week;
 
+    private Integer full;
+
     private Course course;
 
     private TeachersInfo teachersInfo;
@@ -124,6 +126,14 @@ public class TeacherCourseClassPo {
 
     public void setWeek(Integer week) {
         this.week = week;
+    }
+
+    public Integer getFull() {
+        return full;
+    }
+
+    public void setFull(Integer full) {
+        this.full = full;
     }
 
     public Course getCourse() {
