@@ -13,6 +13,7 @@ import cn.hhj.service.StudentsInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -41,7 +42,7 @@ public class GradeController extends BaseController{
      */
     @RequestMapping("/personalGrade")
     @ResponseBody
-    public ResponsResult<List<GradeStudentsTeacherCoursePo>> personalGrade(HttpSession session, TeachersCourse teachersCourse){
+    public ResponsResult<List<GradeStudentsTeacherCoursePo>> personalGrade(HttpSession session, @RequestBody TeachersCourse teachersCourse){
         //从session获取用户信息
         User user = (User)session.getAttribute(BaseInfo.USER);
         StudentsInfo s1 = new StudentsInfo();

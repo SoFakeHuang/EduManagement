@@ -16,8 +16,8 @@
         </association>
 
         <association property="teachersInfo" javaType="cn.hhj.pojo.TeachersInfo">
-            <id column="teachersInfo_id" javaType="INTEGER" property="id"/>
-            <result column="teachersInfo_name" property="name"/>
+            <id column="teachers_info_id" javaType="INTEGER" property="id"/>
+            <result column="teachers_info_name" property="name"/>
         </association>
 
     </resultMap>
