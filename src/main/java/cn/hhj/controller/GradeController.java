@@ -1,6 +1,7 @@
 package cn.hhj.controller;
 
 import cn.hhj.BaseInfo;
+import cn.hhj.ResponsResult;
 import cn.hhj.mapper.GradeMapper;
 import cn.hhj.po.GradeStudentsTeacherCoursePo;
 import cn.hhj.pojo.Grade;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -24,7 +26,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/grade")
-public class GradeController {
+public class GradeController extends BaseController{
     @Autowired
     GradeService gradeService;
 
@@ -34,12 +36,12 @@ public class GradeController {
     /**
      * 查询学生个人成绩
      * @param session
-     * @param model
      * @param teachersCourse 学年和学期
      * @return
      */
     @RequestMapping("/personalGrade")
-    public String personalGrade(HttpSession session, Model model, TeachersCourse teachersCourse){
+    @ResponseBody
+    public ResponsResult<List<GradeStudentsTeacherCoursePo>> personalGrade(HttpSession session, TeachersCourse teachersCourse){
         //从session获取用户信息
         User user = (User)session.getAttribute(BaseInfo.USER);
         StudentsInfo s1 = new StudentsInfo();
@@ -51,7 +53,6 @@ public class GradeController {
         grade.setStudents_info_id(studentsInfo.getId());
         //查询学生个人成绩
         List<GradeStudentsTeacherCoursePo> list = gradeService.jointQuire(grade,teachersCourse);
-        model.addAttribute("gradeList",list);
-        return "grade";
+        return inbound(list,"查询成功");
     }
 }
