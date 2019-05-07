@@ -36,7 +36,7 @@
 
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">   
-                                <a href="/EduManagement/v0.3/course_teacher.jsp" class="nav-link active">
+                                <a href="/EduManagement/v0.3/gradeadd_teacher.jsp" class="nav-link active">
                                     <i class="icon icon-target"></i> 学生成绩录入
                                 </a>
                             </li>                 
@@ -79,9 +79,70 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                  
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4"></div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="single-select">课程名称</label>
+                                            <select id="single-select" class="form-control">
+                                                <option>1</option>
+                                                <option>2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                    <div class="my-4 col-md-1">
+                                        <button class="btn btn-primary">查询</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-        
+            </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header bg-light">
+                                查询结果
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>课程名</th>
+                                                <th>任课老师</th>
+                                                <th>成绩</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td class="col-md-4">美学原理</td>
+                                                <td class="col-md-4">网课</td>
+                                                <td class="col-md-4">
+                                                    <input id="normal-input" class="form-control col-md-3">
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-9"></div>
+                                    <div class="col-md-3">
+                                        <button class="btn btn-primary">提交</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

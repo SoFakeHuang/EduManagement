@@ -29,12 +29,15 @@ public class BaseController {
     protected  <E> ResponsResult<E> failHandler(String msg){
         ResponsResult<E> result = new ResponsResult<E>();
         result.setFlag("f");
+        result.setCode(400);
         result.setMsg(msg);
         return result;
     }
+
     protected  <E> ResponsResult<E> failHandler(){
         ResponsResult<E> result = new ResponsResult<E>();
         result.setFlag("f");
+        result.setCode(400);
         return result;
     }
 }

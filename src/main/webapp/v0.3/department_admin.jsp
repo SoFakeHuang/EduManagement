@@ -16,7 +16,7 @@
                     <li class="nav-title">导航</li>
 
                     <li class="nav-item">
-                        <a href="/EduManagement/v0.3/index_admin.jsp" class="nav-link active">
+                        <a href="/EduManagement/v0.3/index_admin.jsp" class="nav-link">
                             <i class="icon icon-speedometer"></i> 主页
                         </a>
                     </li>

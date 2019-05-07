@@ -12,55 +12,31 @@
     <div class="main-container">
         <div class="sidebar">
             <nav class="sidebar-nav">
+                <li class="nav-title">导航</li>
+
+                <li class="nav-item">
+                    <a href="/EduManagement/user/indexInfo" class="nav-link ">
+                        <i class="icon icon-speedometer"></i> 主页
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/EduManagement/v0.3/elcourse.jsp" class="nav-link active">
+                        <i class="icon icon-target"></i> 自主选课
+                    </a>
+                </li>
+                </li>
                 <ul class="nav">
-                    <li class="nav-title">导航</li>
+                    <li class="nav-item">
+                        <a href="/EduManagement/v0.3/grade.jsp" class="nav-link">
+                            <i class="icon icon-energy"></i> 查询成绩
+                        </a>
+                    </li>
 
                     <li class="nav-item">
-                        <a href="/EduManagement/v0.3/index.jsp" class="nav-link">
-                            <i class="icon icon-speedometer"></i> 主页
+                        <a href="/EduManagement/v0.3/info.jsp" class="nav-link">
+                            <i class="icon icon-energy"></i> 查询学籍信息
                         </a>
                     </li>
-
-                    <li class="nav-item nav-dropdown open">
-                        <a href="#" class="nav-link nav-dropdown-toggle">
-                            <i class="icon icon-target"></i> 选课 <i class="fa fa-caret-left"></i>
-                        </a>
-
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a href="/EduManagement/v0.3/course.jsp" class="nav-link">
-                                    <i class="icon icon-target"></i> 学生课表查询
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/EduManagement/v0.3/elcourse.jsp" class="nav-link active">
-                                    <i class="icon icon-target"></i> 自主选课
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item nav-dropdown">
-                        <a href="#" class="nav-link nav-dropdown-toggle">
-                            <i class="icon icon-energy"></i> 信息查询 <i class="fa fa-caret-left"></i>
-                        </a>
-
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a href="/EduManagement/v0.3/grade.jsp" class="nav-link">
-                                    <i class="icon icon-energy"></i> 查询成绩
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/EduManagement/v0.3/info.jsp" class="nav-link">
-                                    <i class="icon icon-energy"></i> 查询学籍信息
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
                     <li class="nav-title">更多</li>
 
                     <li class="nav-item nav-dropdown">
@@ -124,7 +100,7 @@
                                             <td>美学原理</td>
                                             <td>网课</td>
                                             <td>
-                                                <button class="btn btn-outline-primary" data-toggle="modal"
+                                                <button id="confirm" class="btn btn-outline-primary" data-toggle="modal"
                                                         data-target="#modal-1">选课
                                                 </button>
                                             </td>
@@ -142,27 +118,31 @@
     </div>
 </div>
 
-<div class="modal fade" id="modal-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">信息</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
 
-            <div class="modal-body">
-                选课成功！
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
-            </div>
-        </div>
-    </div>
-</div>
+<script>
+    $('#confirm').click(function () {
+            // 获取课程名称
+            var className =$("input[id='className']").val().replace(/(^\s*)|(\s*$)/g, "");
+            //包装成JSON
+            var obj={
+                'name':className
+            }
+            // ajax处理接收课程表
+            $.ajax({
+                    url: "${pageContext.request.contextPath}/mm/m3",
+                    data:JSON.stringify(obj),
+                    dataType:"json",
+                    type: "post",
+                    contentType: "application/json;charset=utf-8",
+                    success: function (data) {
+                        alert(data)
+                        alert("成功")
+                    }
+                }
+            )
+        }
+    )
+</script>
 
 <%@include file="JSResource.jsp" %>
 </body>

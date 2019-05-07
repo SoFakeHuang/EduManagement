@@ -45,7 +45,7 @@ public class MethodTimerInterceptor implements HandlerInterceptor {
             LOGGER.warn("方法耗时严重，请及时处理，耗时："+ spendTime + "毫秒");
         }else{
             LOGGER.info("方法耗时："+ spendTime + "毫秒，速度正常");
-        }
+    }
     }
 
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {

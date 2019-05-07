@@ -12,55 +12,31 @@
     <div class="main-container">
         <div class="sidebar">
             <nav class="sidebar-nav">
+                <li class="nav-title">导航</li>
+
+                <li class="nav-item">
+                    <a href="/EduManagement/user/indexInfo" class="nav-link ">
+                        <i class="icon icon-speedometer"></i> 主页
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/EduManagement/v0.3/elcourse.jsp" class="nav-link">
+                        <i class="icon icon-target"></i> 自主选课
+                    </a>
+                </li>
+                </li>
                 <ul class="nav">
-                    <li class="nav-title">导航</li>
+                    <li class="nav-item">
+                        <a href="/EduManagement/v0.3/grade.jsp" class="nav-link">
+                            <i class="icon icon-energy"></i> 查询成绩
+                        </a>
+                    </li>
 
                     <li class="nav-item">
-                        <a href="/EduManagement/v0.3/index.jsp" class="nav-link">
-                            <i class="icon icon-speedometer"></i> 主页
+                        <a href="/EduManagement/v0.3/info.jsp" class="nav-link active">
+                            <i class="icon icon-energy"></i> 查询学籍信息
                         </a>
                     </li>
-
-                    <li class="nav-item nav-dropdown">
-                        <a href="#" class="nav-link nav-dropdown-toggle">
-                            <i class="icon icon-target"></i> 选课 <i class="fa fa-caret-left"></i>
-                        </a>
-
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a href="/EduManagement/v0.3/course.jsp" class="nav-link">
-                                    <i class="icon icon-target"></i> 学生课表查询
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/EduManagement/v0.3/elcourse.jsp" class="nav-link">
-                                    <i class="icon icon-target"></i> 自主选课
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item nav-dropdown open">
-                        <a href="#" class="nav-link nav-dropdown-toggle">
-                            <i class="icon icon-energy"></i> 信息查询 <i class="fa fa-caret-left"></i>
-                        </a>
-
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item">
-                                <a href="/EduManagement/v0.3/grade.jsp" class="nav-link">
-                                    <i class="icon icon-energy"></i> 查询成绩
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="/EduManagement/v0.3/info.jsp" class="nav-link active">
-                                    <i class="icon icon-energy"></i> 查询学籍信息
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
                     <li class="nav-title">更多</li>
 
                     <li class="nav-item nav-dropdown">
@@ -120,7 +96,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

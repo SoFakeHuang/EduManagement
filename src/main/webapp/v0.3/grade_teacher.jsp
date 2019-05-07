@@ -78,7 +78,62 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                  
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <input type="text" id="className" name="name"
+                                                   class="form-control" placeholder="课程名称">
+                                            <span class="input-group-btn">
+                                                    <button id="selectCourse" type="button" class="btn btn-primary"><i
+                                                            class="fa fa-search"></i>查找</button>
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header bg-light">
+                                结果
+                            </div>
+
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>课程名称</th>
+                                            <th>学生姓名</th>
+                                            <th>成绩</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tbody">
+                                        <tr>
+                                            <td>语文</td>
+                                            <td>三年</td>
+                                            <td>98</td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
         
             </div>
