@@ -229,7 +229,9 @@
                             $("#table_" + json.data[i].week + "_" + json.data[i].class_time).html(json.data[i].aClass.name + "<br>" + json.data[i].course.name + "<br>" + json.data[i].classroom);
                         }
                     },
-                    error: alert("输入信息有误")
+                    error: function (){
+                        alert("输入信息有误")
+                    }
                 }
             )
         }

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
@@ -20,7 +21,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/EduManagement/v0.3/elcourse.jsp" class="nav-link active">
+                    <a href="/EduManagement/teachersCourse/electiveList" class="nav-link active">
                         <i class="icon icon-target"></i> 自主选课
                     </a>
                 </li>
@@ -84,8 +85,6 @@
                                 <div class="card-header bg-light">
                                     课程信息
                                 </div>
-
-
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
@@ -96,16 +95,17 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>${courseList.get(0).course.name}</td>
-                                            <td>网课</td>
-                                            <td>
-                                                <button id="confirm" class="btn btn-outline-primary" data-toggle="modal"
-                                                        data-target="#modal-1">选课
-                                                </button>
-                                            </td>
-                                        </tr>
-
+                                            <c:forEach items="${courseList}" var="list" varStatus="vs">
+                                            <tr>
+                                                <td>${list.course.name}</td>
+                                                <td>网课</td>
+                                                <td>
+                                                    <button id="confirm" class="btn btn-outline-primary" data-toggle="modal"
+                                                            data-target="#modal-1">选课
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>

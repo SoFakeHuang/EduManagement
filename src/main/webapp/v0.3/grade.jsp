@@ -19,7 +19,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/EduManagement/v0.3/elcourse.jsp" class="nav-link">
+                    <a href="/EduManagement/teachersCourse/electiveList" class="nav-link">
                         <i class="icon icon-target"></i> 自主选课
                     </a>
                 </li>
@@ -63,8 +63,8 @@
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="single-select">学年</label>
-                                            <select class="form-control">
+                                            <label for="year-select">学年</label>
+                                            <select id="year-select" class="form-control">
                                                 <option>2015</option>
                                                 <option>2016</option>
                                                 <option>2017</option>
@@ -76,8 +76,8 @@
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="single-select">学期</label>
-                                            <select id="single-select" class="form-control">
+                                            <label for="term-select">学期</label>
+                                            <select id="term-select" class="form-control">
                                                 <option>1</option>
                                                 <option>2</option>
                                             </select>
@@ -87,7 +87,7 @@
                                     <div class="col-md-1"></div>
 
                                     <div class="my-4">
-                                        <button class="btn btn-primary">查询</button>
+                                        <button id="selectGrade" class="btn btn-primary">查询</button>
                                     </div>
                                 </div>
                             </div>
@@ -134,5 +134,31 @@
     </div>
 </div>
 <%@include file="JSResource.jsp" %>
+
+<script>
+    $('#selectGrade').click(function () {
+            // 获取学年
+            var year = $("#year-select").val().replace(/(^\s*)|(\s*$)/g, "");
+            var term = $('#term-select').val().replace(/(^\s*)|(\s*$)/g, "");
+            //包装成JSON
+            var obj = {
+                'years': year,
+                'semester':term,
+            }
+            // ajax处理接收课程表
+            $.ajax({
+                    url: "${pageContext.request.contextPath}/mm/m4",
+                    data: JSON.stringify(obj),
+                    dataType: "json",
+                    type: "post",
+                    contentType: "application/json;charset=utf-8",
+                    success: function (result) {
+                        alert(result)
+                    }
+                }
+            )
+        }
+    )
+</script>
 </body>
 </html>

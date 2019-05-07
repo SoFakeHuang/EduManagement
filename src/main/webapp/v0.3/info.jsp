@@ -20,7 +20,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/EduManagement/v0.3/elcourse.jsp" class="nav-link">
+                    <a href="/EduManagement/teachersCourse/electiveList" class="nav-link">
                         <i class="icon icon-target"></i> 自主选课
                     </a>
                 </li>
