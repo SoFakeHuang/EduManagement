@@ -58,7 +58,7 @@ public class UserController extends BaseController{
                     StudentsInfo studentsInfo = new StudentsInfo();
                     studentsInfo.setUser_id(userList.get(0).getId());
                     //查询基础信息并存入model
-                    model.addAttribute("studentClassDepartmentPo",studentsInfoService.quire(studentsInfo).get(0));
+                    model.addAttribute("studentClassDepartmentPo",studentsInfoService.jointQuire(studentsInfo).get(0));
                     return "index";
                 default:
                     model.addAttribute("msg","用户类型不明确");

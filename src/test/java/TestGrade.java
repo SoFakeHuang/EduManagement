@@ -1,5 +1,6 @@
 import cn.hhj.mapper.GradeMapper;
 import cn.hhj.pojo.Grade;
+import cn.hhj.pojo.TeachersCourse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +47,14 @@ public class TestGrade {
         Grade grade = new Grade();
         grade.setStudents_info_id(2);
         System.out.println(gradeMapper.quire(grade).get(0).getGrade());
+    }
+
+    @Test
+    public void jointQuire(){
+        Grade grade = new Grade();
+        grade.setStudents_info_id(2);
+        TeachersCourse teachersCourse = new TeachersCourse();
+        teachersCourse.setSemester(2);
+        System.out.println(gradeMapper.jointQuire(grade,teachersCourse).get(0).getGrade());
     }
 }

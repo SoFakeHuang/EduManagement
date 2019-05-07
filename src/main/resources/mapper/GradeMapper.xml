@@ -10,11 +10,6 @@
     </resultMap>
     
     <resultMap id="GradeStudentsTeacherCourseMap" type="cn.hhj.po.GradeStudentsTeacherCoursePo" extends="BaseResultMap">
-        <association property="studentsInfo" javaType="cn.hhj.pojo.StudentsInfo">
-            <id column="studentsInfo_id" javaType="INTEGER" property="id"/>
-            <result column="studentsInfo_name" property="name"/>
-        </association>
-
         <association property="course" javaType="cn.hhj.pojo.Course">
             <id column="course_id" javaType="INTEGER" property="id"/>
             <result column="course_name" property="name"/>
@@ -76,6 +71,36 @@
             </if>
             <if test="teachers_course_id != null">
                 and teachers_course_id = #{teachers_course_id}
+            </if>
+        </where>
+    </select>
+
+    <select id="jointQuire" resultMap="GradeStudentsTeacherCourseMap">
+        SELECT grade.id,grade,students_info_id,teachers_course_id,
+        course.id AS course_id,course.name AS course_name,
+        teachers_info.id AS teachers_info_id,teachers_info.name AS teachers_info_name
+        FROM grade,course,teachers_course,teachers_info
+        <where>
+            <if test="grade.id != null">
+                id = #{grade.id}
+            </if>
+            <if test="grade.grade != null">
+                and grade = #{grade.grade}
+            </if>
+            <if test="grade.students_info_id != null">
+                and students_info_id = #{grade.students_info_id}
+            </if>
+            <if test="grade.teachers_course_id != null">
+                and teachers_course_id = #{grade.teachers_course_id}
+            </if>
+            AND grade.teachers_course_id = teachers_course.id
+            AND teachers_course.course_id = course.id
+            AND teachers_course.teachers_info_id = teachers_info.id
+            <if test="teachersCourse.years != null">
+              AND teachers_course.years = #{teachersCourse.years}
+            </if>
+            <if test="teachersCourse.semester != null">
+              AND teachers_course.semester = #{teachersCourse.semester}
             </if>
         </where>
     </select>

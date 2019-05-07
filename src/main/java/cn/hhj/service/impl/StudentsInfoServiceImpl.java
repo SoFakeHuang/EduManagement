@@ -32,7 +32,11 @@ public class StudentsInfoServiceImpl implements StudentsInfoService {
         return studentsInfoMapper.update(studentsInfo);
     }
 
-    public List<StudentClassDepartmentPo> quire(StudentsInfo studentsInfo) {
+    public List<StudentsInfo> quire(StudentsInfo studentsInfo) {
         return studentsInfoMapper.quire(studentsInfo);
+    }
+
+    public List<StudentClassDepartmentPo> jointQuire(StudentsInfo studentsInfo) {
+        return studentsInfoMapper.jointQuire(studentsInfo);
     }
 }

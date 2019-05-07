@@ -53,8 +53,8 @@ public class TestStudentsInfo {
         StudentsInfo studentsInfo = new StudentsInfo();
         studentsInfo.setUser_id(1);
 
-        System.out.println(studentsInfoMapper.quire(studentsInfo).get(0).getaClass().getName());
-        System.out.println(studentsInfoMapper.quire(studentsInfo).get(0).getDepartment().getName());
-        System.out.println(studentsInfoMapper.quire(studentsInfo).get(0).getName());
+        System.out.println(studentsInfoMapper.jointQuire(studentsInfo).get(0).getaClass().getName());
+        System.out.println(studentsInfoMapper.jointQuire(studentsInfo).get(0).getDepartment().getName());
+        System.out.println(studentsInfoMapper.jointQuire(studentsInfo).get(0).getName());
     }
 }

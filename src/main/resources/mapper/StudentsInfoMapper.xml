@@ -77,7 +77,42 @@
     WHERE id = #{id}
   </update>
 
-  <select id="quire" resultMap="StudentClassDepartmentMap">
+  <select id="quire" resultType="cn.hhj.pojo.StudentsInfo">
+    SELECT
+      *
+    FROM students_info
+    <where>
+      <if test="id != null">
+        students_info.id = #{id}
+      </if>
+      <if test="name != null">
+        and name = #{name}
+      </if>
+      <if test="student_number != null">
+        and student_number = #{student_number}
+      </if>
+      <if test="class_id != null">
+        and class_id = #{class_id}
+      </if>
+      <if test="user_id != null">
+        and user_id = #{user_id}
+      </if>
+      <if test="sex != null">
+        and sex = #{sex}
+      </if>
+      <if test="phone != null">
+        and phone = #{phone}
+      </if>
+      <if test="birthplace != null">
+        and birthplace = #{birthplace}
+      </if>
+      <if test="id_number != null">
+        and id_number = #{id_number}
+      </if>
+    </where>
+  </select>
+
+  <select id="jointQuire" resultMap="StudentClassDepartmentMap">
     SELECT
       <include refid="StudentsInfoColumn"/>,class.name AS class_name,department.name AS department_name
     FROM students_info,class,department

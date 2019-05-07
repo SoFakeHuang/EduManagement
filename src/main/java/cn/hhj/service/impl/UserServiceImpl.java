@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
             case 2:
                 StudentsInfo studentsInfo = new StudentsInfo();
                 studentsInfo.setUser_id(user.getId());
-                return studentsInfoMapper.quire(studentsInfo).get(0);
+                return studentsInfoMapper.jointQuire(studentsInfo).get(0);
             default:
                 return null;
         }
