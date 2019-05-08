@@ -56,4 +56,6 @@ public class GradeController extends BaseController{
         List<GradeStudentsTeacherCoursePo> list = gradeService.jointQuire(grade,teachersCourse);
         return inbound(list,"查询成功");
     }
+
+
 }

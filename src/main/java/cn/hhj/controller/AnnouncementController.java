@@ -59,8 +59,9 @@ public class AnnouncementController extends BaseController{
         }
     }
 
-    @RequestMapping("/quire")
-    public ResponsResult<List<Announcement>> quire(Announcement announcement){
+    @RequestMapping("/quireAll")
+    @ResponseBody
+    public ResponsResult<List<Announcement>> quireAll(Announcement announcement){
         List<Announcement> list = announcementService.quire(announcement);
         return inbound(list,"查询成功");
     }

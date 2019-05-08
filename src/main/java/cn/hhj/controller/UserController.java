@@ -3,8 +3,10 @@ package cn.hhj.controller;
 import cn.hhj.BaseInfo;
 import cn.hhj.ResponsResult;
 import cn.hhj.po.StudentClassDepartmentPo;
+import cn.hhj.pojo.Announcement;
 import cn.hhj.pojo.StudentsInfo;
 import cn.hhj.pojo.User;
+import cn.hhj.service.AnnouncementService;
 import cn.hhj.service.StudentsInfoService;
 import cn.hhj.service.UserService;
 import com.github.pagehelper.PageHelper;
@@ -30,6 +32,9 @@ public class UserController extends BaseController{
     @Autowired
     private StudentsInfoService studentsInfoService;
 
+    @Autowired
+    private AnnouncementService announcementService;
+
     /**
      * 用户登陆，根据用户类型返回对应页面,并且查询对应基础信息
      * @param user
@@ -46,8 +51,9 @@ public class UserController extends BaseController{
         if(userList.size() == 1){
             //账号密码正确，将用户信息存入session，用于后续用户相关操作
             session.setAttribute(BaseInfo.USER, userList.get(0));
-            //返回成功信息
-            model.addAttribute("msg",BaseInfo.SUCCESS);
+            //查询公告，并放入model
+            List<Announcement> announcementList = announcementService.quire(new Announcement());
+            model.addAttribute("announcementList",announcementList);
             //根据用户类型返回对应页面，并查询基础信息
             switch (userList.get(0).getType()){
                 case 0:
@@ -74,6 +80,10 @@ public class UserController extends BaseController{
     public String indexInfo(HttpSession session, Model model){
         User user = (User)session.getAttribute(BaseInfo.USER);
         Object userInfo = userService.quireUserInfo(user);
+
+        //查询公告，并放入model
+        List<Announcement> announcementList = announcementService.quire(new Announcement());
+        model.addAttribute("announcementList",announcementList);
         switch (user.getType()){
             case 0:
             case 1:

@@ -86,7 +86,7 @@
 
                         <div class="tab-content">
                             <div class="tab-pane active" id="home" role="tabpanel">
-                                正文1
+                                ${announcementList.get(0).text}
                             </div>
 
                             <div class="tab-pane" id="profile" role="tabpanel">
