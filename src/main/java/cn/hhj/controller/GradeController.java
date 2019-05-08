@@ -57,5 +57,12 @@ public class GradeController extends BaseController{
         return inbound(list,"查询成功");
     }
 
+    @RequestMapping("/addElective")
+    @ResponseBody
+    public ResponsResult addElective(HttpSession session,String teachers_course_id){
+        User user = (User)session.getAttribute(BaseInfo.USER);
+        return inbound(null,"选课成功");
+    }
+
 
 }
