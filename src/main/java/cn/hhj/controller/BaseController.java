@@ -2,7 +2,6 @@ package cn.hhj.controller;
 
 import cn.hhj.BaseInfo;
 import cn.hhj.ResponsResult;
-import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  * @Author: SoFakeHuang

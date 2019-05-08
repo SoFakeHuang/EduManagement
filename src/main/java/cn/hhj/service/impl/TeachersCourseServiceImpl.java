@@ -34,7 +34,7 @@ public class TeachersCourseServiceImpl implements TeachersCourseService {
     }
 
     public List<TeachersCourse> quire(TeachersCourse teachersCourse) {
-        return null;
+        return teachersCourseMapper.quire(teachersCourse);
     }
 
     public List<TeachersCourse> quireByClassId(Integer classId){
