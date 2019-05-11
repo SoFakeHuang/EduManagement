@@ -24,7 +24,7 @@ import java.util.List;
  * @Version 1.0
  */
 @Controller
-@RequestMapping("/grade")
+    @RequestMapping("/grade")
 public class GradeController extends BaseController{
     @Autowired
     GradeService gradeService;
@@ -63,6 +63,7 @@ public class GradeController extends BaseController{
         switch (i){
             case -1: return failHandler("查无此课程");
             case -2: return failHandler("此课程已满");
+            case -3: return failHandler("重复选择该课程");
             case 0: return failHandler("sql语句执行失败");
             case 1: return inbound(null,"选课成功");
             default:return failHandler("未知错误");

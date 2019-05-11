@@ -38,6 +38,9 @@ public class GradeServiceImpl implements GradeService {
     }
 
     public Integer addElective(Grade grade) {
+        if(!gradeMapper.quire(grade).isEmpty()){
+            return -3;
+        }
         TeachersCourse teachersCourse = new TeachersCourse();
         teachersCourse.setId(grade.getTeachers_course_id());
         List<TeachersCourse> list = teachersCourseService.quire(teachersCourse);
