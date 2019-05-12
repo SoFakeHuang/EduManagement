@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
@@ -70,18 +71,15 @@
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#home" role="tab"
-                                   aria-controls="home">标题1</a>
+                                   aria-controls="home">${announcementList.get(0).tittle}</a>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#profile" role="tab"
-                                   aria-controls="profile">标题2</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#messages" role="tab"
-                                   aria-controls="messages">标题3</a>
-                            </li>
+                            <c:forEach items="${announcementList}" var="list" begin="1" varStatus="vs">
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#massage_${vs.index}" role="tab"
+                                       aria-controls="#massage_${vs.index}">${list.tittle}</a>
+                                </li>
+                            </c:forEach>
                         </ul>
 
                         <div class="tab-content">
@@ -89,23 +87,11 @@
                                 ${announcementList.get(0).text}
                             </div>
 
-                            <div class="tab-pane" id="profile" role="tabpanel">
-                                2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                                mollit anim id est laborum.
-                            </div>
-
-                            <div class="tab-pane" id="messages" role="tabpanel">
-                                3. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                                mollit anim id est laborum.
-                            </div>
+                            <c:forEach items="${announcementList}" var="list" begin="1" varStatus="vs">
+                                <div class="tab-pane" role="tabpanel" id="massage_${vs.index}">
+                                        ${list.text}
+                                </div>
+                            </c:forEach>
                         </div>
                     </div>
                 </div>
@@ -191,7 +177,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -216,8 +201,10 @@
                     contentType: "application/json;charset=utf-8",
                     success: function (result) {
                         var json = eval("(" + result + ")");
+                        /*
+                        测试接收数据
                         alert(json.data[0].aClass.name);
-                        alert(json.code)
+                        alert(json.code)*/
                         //清空课程表
                         for (var i = 1; i < 6; i++) {
                             for (var j = 1; j < 6; j++) {

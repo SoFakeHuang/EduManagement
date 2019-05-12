@@ -32,7 +32,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="/EduManagement/v0.3/info.jsp" class="nav-link">
+                        <a href="/EduManagement/studentsInfo/quireInfo" class="nav-link">
                             <i class="icon icon-energy"></i> 查询学籍信息
                         </a>
                     </li>
@@ -65,11 +65,10 @@
                                         <div class="form-group">
                                             <label for="year-select">学年</label>
                                             <select id="year-select" class="form-control">
-                                                <option>2015</option>
-                                                <option>2016</option>
-                                                <option>2017</option>
-                                                <option>2018</option>
-                                                <option>2019</option>
+                                                <option>2015-2016</option>
+                                                <option>2016-2017</option>
+                                                <option>2017-2018</option>
+                                                <option>2018-2019</option>
                                             </select>
                                         </div>
                                     </div>
@@ -107,20 +106,20 @@
                                 <div class="row">
 
                                     <div class="table-responsive">
-                                        <table class="table table-hover">
+                                        <table id="gradeTable" class="table table-hover">
                                             <thead>
-                                            <tr>
-                                                <th>课程名</th>
-                                                <th>任课老师</th>
-                                                <th>成绩</th>
-                                            </tr>
+                                                <tr align="center">
+                                                    <th >课程名</th>
+                                                    <th>任课老师</th>
+                                                    <th >成绩</th>
+                                                </tr>
                                             </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>美学原理</td>
-                                                <td>网课</td>
-                                                <td>90</td>
-                                            </tr>
+                                            <tbody align="center" id="gradeTbody">
+                                                <tr id="template">
+                                                    <td id="courseName"></td>
+                                                    <td id="teacher"></td>
+                                                    <td id="grade"></td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -147,13 +146,31 @@
             }
             // ajax处理接收课程表
             $.ajax({
-                    url: "${pageContext.request.contextPath}/mm/m4",
+                    url: "${pageContext.request.contextPath}/grade/personalGrade",
                     data: JSON.stringify(obj),
                     dataType: "json",
                     type: "post",
                     contentType: "application/json;charset=utf-8",
                     success: function (result) {
-                        alert(result)
+                        var html="";
+
+                        /*测试接收数据
+                        var i;
+                        for(i=0;i<result.data.length;i++){
+                            alert(result.data[i].grade)
+                            alert(result.data[i].course.name)
+                        }*/
+                        for (i=0;i<result.data.length;i++) {
+                            html+=`
+                              <tr>
+                                 <td>`+result.data[i].course.name+`</td>
+                                 <td>`+result.data[i].teachersInfo.name+`</td>
+                                 <td>`+result.data[i].grade+`</td>
+                              </tr>
+                            `;
+                        }
+                        $('#gradeTbody').html(html)
+                        return false;
                     }
                 }
             )

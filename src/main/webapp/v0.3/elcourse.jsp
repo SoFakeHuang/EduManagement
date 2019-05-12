@@ -34,7 +34,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="/EduManagement/v0.3/info.jsp" class="nav-link">
+                        <a href="/EduManagement/studentsInfo/quireInfo" class="nav-link">
                             <i class="icon icon-energy"></i> 查询学籍信息
                         </a>
                     </li>
@@ -94,14 +94,13 @@
                                             <th>选课</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="courseTbody">
                                             <c:forEach items="${courseList}" var="list" varStatus="vs">
                                             <tr>
                                                 <td>${list.course.name}</td>
                                                 <td>网课</td>
                                                 <td>
-                                                    <button id="confirm" class="btn btn-outline-primary" data-toggle="modal"
-                                                            data-target="#modal-1">选课
+                                                    <button id="confirm_${list.id}" name="${list.id}" class="btn btn-outline-primary">选课
                                                     </button>
                                                 </td>
                                             </tr>
@@ -117,33 +116,29 @@
         </div>
     </div>
 </div>
-
-
-<script>
-    $('#confirm').click(function () {
-            // 获取课程名称
-            var className =$("input[id='className']").val().replace(/(^\s*)|(\s*$)/g, "");
-            //包装成JSON
-            var obj={
-                'name':className
-            }
-            // ajax处理接收课程表
-            $.ajax({
-                    url: "${pageContext.request.contextPath}/mm/m3",
-                    data:JSON.stringify(obj),
-                    dataType:"json",
-                    type: "post",
-                    contentType: "application/json;charset=utf-8",
-                    success: function (data) {
-                        alert(data)
-                        alert("成功")
-                    }
-                }
-            )
-        }
-    )
-</script>
-
 <%@include file="JSResource.jsp" %>
 </body>
+
+<script>
+    $( function (){
+        $( "button[id^='confirm_']" ).each( function(){//获取所有的id为confirm_开头的Button
+            $( this ).bind("click" , function(){//绑定当前点击的按钮
+                var ids = $(this).attr( "name");//获取它的id属性值
+                $.ajax({
+                        url: "${pageContext.request.contextPath}/grade/addElective",
+                        data:ids,
+                        dataType:"json",
+                        type: "post",
+                        contentType: "application/json;charset=utf-8",
+                        success: function (data) {
+                            alert(data.msg)
+                        }
+                    }
+                )
+                $(this).attr("disabled", true)
+            });
+        });
+    });
+</script>
+
 </html>

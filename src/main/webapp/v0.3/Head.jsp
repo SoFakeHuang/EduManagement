@@ -23,25 +23,18 @@
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-header">账户信息</div>
 
-                <a href="#" class="dropdown-item">
+                <a href="/EduManagement/studentsInfo/quireInfo" class="dropdown-item">
                     <i class="fa fa-user"></i> 个人信息
                 </a>
 
-                <a href="#" class="dropdown-item">
-                    <i class="fa fa-envelope"></i> 消息
-                </a>
 
                 <div class="dropdown-header">设置</div>
-
-                <a href="#" class="dropdown-item">
-                    <i class="fa fa-bell"></i> 通知
-                </a>
 
                 <a href="#" class="dropdown-item">
                     <i class="fa fa-wrench"></i> 设置
                 </a>
 
-                <a href="#" class="dropdown-item">
+                <a href="/EduManagement/login/login.jsp" class="dropdown-item">
                     <i class="fa fa-lock"></i> 注销
                 </a>
             </div>

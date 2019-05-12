@@ -16,7 +16,7 @@
                     <li class="nav-title">导航</li>
 
                     <li class="nav-item">
-                        <a href="/EduManagement/v0.3/index_teacher.jsp" class="nav-link active">
+                        <a href="/EduManagement/user/indexInfo" class="nav-link active">
                             <i class="icon icon-speedometer"></i> 主页
                         </a>
                     </li>
@@ -31,15 +31,15 @@
                                 <a href="/EduManagement/v0.3/grade_teacher.jsp" class="nav-link">
                                     <i class="icon icon-target"></i> 学生成绩操作
                                 </a>
-                            </li>                 
+                            </li>
                         </ul>
 
                         <ul class="nav-dropdown-items">
-                            <li class="nav-item">   
+                            <li class="nav-item">
                                 <a href="/EduManagement/v0.3/gradeadd_teacher.jsp" class="nav-link">
                                     <i class="icon icon-target"></i> 学生成绩录入
                                 </a>
-                            </li>                 
+                            </li>
                         </ul>
                     </li>
 
@@ -96,33 +96,28 @@
                     <div class="col-md-9 mb-4">
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-controls="home">Home</a>
+                                <a class="nav-link active" data-toggle="tab" href="#home" role="tab"
+                                   aria-controls="home">${announcementList.get(0).tittle}</a>
                             </li>
-    
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#profile" role="tab" aria-controls="profile">Profile</a>
-                            </li>
-    
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#messages" role="tab" aria-controls="messages">Messages</a>
-                            </li>
+
+                            <c:forEach items="${announcementList}" var="list" begin="1" varStatus="vs">
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#massage_${vs.index}" role="tab"
+                                       aria-controls="#massage_${vs.index}">${list.tittle}</a>
+                                </li>
+                            </c:forEach>
                         </ul>
-    
+
                         <div class="tab-content">
                             <div class="tab-pane active" id="home" role="tabpanel">
-                                1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                ${announcementList.get(0).text}
                             </div>
-    
-                            <div class="tab-pane" id="profile" role="tabpanel">
-                                2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </div>
-    
-                            <div class="tab-pane" id="messages" role="tabpanel">
-                                3. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                            </div>
+
+                            <c:forEach items="${announcementList}" var="list" begin="1" varStatus="vs">
+                                <div class="tab-pane" role="tabpanel" id="massage_${vs.index}">
+                                        ${list.text}
+                                </div>
+                            </c:forEach>
                         </div>
                     </div>
                 </div>
@@ -131,14 +126,29 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header bg-light">
-                                课表信息
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        课表信息
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <input type="text" id="className" name="name"
+                                                   class="form-control" placeholder="班级">
+                                            <span class="input-group-btn">
+                                                    <button id="selectCourse" type="button" class="btn btn-primary"><i
+                                                            class="fa fa-search"></i>查找</button>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-    
+
                             <div class="card-body">
-                                <div>
+                                <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
                                         <tr>
+                                            <th></th>
                                             <th>星期一</th>
                                             <th>星期二</th>
                                             <th>星期三</th>
@@ -146,41 +156,46 @@
                                             <th>星期五</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="tbody">
                                         <tr>
-                                            <td>第一节</td>
-                                            <td>语文</td>
-                                            <td></td>
-                                            <td>数学</td>
-                                            <td>英语</td>
+                                            <th scope="row">1-2节</th>
+                                            <td id="table_1_1"></td>
+                                            <td id="table_2_1"></td>
+                                            <td id="table_3_1"></td>
+                                            <td id="table_4_1"></td>
+                                            <td id="table_5_1"></td>
                                         </tr>
                                         <tr>
-                                            <td>2</td>
-                                            <td>Google Pixel XL</td>
-                                            <td>99,542</td>
-                                            <td>$750</td>
-                                            <td>3%</td>
+                                            <th scope="row">3-4节</th>
+                                            <td id="table_1_2"></td>
+                                            <td id="table_2_2"></td>
+                                            <td id="table_3_2"></td>
+                                            <td id="table_4_2"></td>
+                                            <td id="table_5_2"></td>
                                         </tr>
                                         <tr>
-                                            <td>3</td>
-                                            <td>iPhone X</td>
-                                            <td>62,220</td>
-                                            <td>$1,200</td>
-                                            <td>0%</td>
+                                            <th scope="row">5-6节</th>
+                                            <td id="table_1_3"></td>
+                                            <td id="table_2_3"></td>
+                                            <td id="table_3_3"></td>
+                                            <td id="table_4_3"></td>
+                                            <td id="table_5_3"></td>
                                         </tr>
                                         <tr>
-                                            <td>4</td>
-                                            <td>OnePlus 5T</td>
-                                            <td>50,000</td>
-                                            <td>$650</td>
-                                            <td>5%</td>
+                                            <th scope="row">7-8节</th>
+                                            <td id="table_1_4"></td>
+                                            <td id="table_2_4"></td>
+                                            <td id="table_3_4"></td>
+                                            <td id="table_4_4"></td>
+                                            <td id="table_5_4"></td>
                                         </tr>
                                         <tr>
-                                            <td>5</td>
-                                            <td>Google Nexus 6</td>
-                                            <td>400</td>
-                                            <td>$400</td>
-                                            <td>7%</td>
+                                            <th scope="row">9-10节</th>
+                                            <td id="table_1_5"></td>
+                                            <td id="table_2_5"></td>
+                                            <td id="table_3_5"></td>
+                                            <td id="table_4_5"></td>
+                                            <td id="table_5_5"></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -188,7 +203,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
