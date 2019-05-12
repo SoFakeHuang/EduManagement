@@ -22,7 +22,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="/EduManagement/v0.3/gradeadd_teacher.jsp" class="nav-link">
+                        <a href="/EduManagement/grade/GradeAdd" class="nav-link">
                             <i class="icon icon-target"></i> 学生成绩操作
                         </a>
                     </li>

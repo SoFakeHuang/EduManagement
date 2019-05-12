@@ -2,15 +2,16 @@ package cn.hhj.controller;
 
 import cn.hhj.BaseInfo;
 import cn.hhj.ResponsResult;
+import cn.hhj.mapper.TeachersInfoMapper;
 import cn.hhj.po.GradeStudentsTeacherCoursePo;
-import cn.hhj.pojo.Grade;
-import cn.hhj.pojo.StudentsInfo;
-import cn.hhj.pojo.TeachersCourse;
-import cn.hhj.pojo.User;
+import cn.hhj.po.TeacherCourseClassPo;
+import cn.hhj.pojo.*;
 import cn.hhj.service.GradeService;
 import cn.hhj.service.StudentsInfoService;
+import cn.hhj.service.TeachersCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,6 +32,12 @@ public class GradeController extends BaseController{
 
     @Autowired
     StudentsInfoService studentsInfoService;
+
+    @Autowired
+    TeachersInfoMapper teachersInfoMapper;
+
+    @Autowired
+    TeachersCourseService teachersCourseService;
 
     /**
      * 查询学生个人成绩
@@ -68,6 +75,21 @@ public class GradeController extends BaseController{
             case 1: return inbound(null,"选课成功");
             default:return failHandler("未知错误");
         }
+    }
+
+    @RequestMapping("/GradeAdd")
+    public String gradeAdd(HttpSession session, Model model){
+        TeachersInfo t1 = new TeachersInfo();
+        //从session获取userID放入TeachersInfo对象
+        t1.setUser_id(((User)session.getAttribute(BaseInfo.USER)).getId());
+        //根据userID查询TeachersInfo信息
+        TeachersInfo teachersInfo = teachersInfoMapper.quire(t1).get(0);
+        TeachersCourse teachersCourse = new TeachersCourse();
+        teachersCourse.setTeachers_info_id(teachersInfo.getId());
+        //根据TeachersInfoID查询对应教师的课程
+        List<TeacherCourseClassPo> courseList = teachersCourseService.jointQuire(teachersCourse);
+        model.addAttribute("courseList", courseList);
+        return "gradeadd_teacher";
     }
 
     //从session取出user数据，查询studentsInfo_id并用grade封装

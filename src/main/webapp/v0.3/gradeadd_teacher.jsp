@@ -61,8 +61,8 @@
                                         <div class="form-group">
                                             <label for="single-select">课程名称</label>
                                             <select id="single-select" class="form-control">
-                                                <option>1</option>
-                                                <option>2</option>
+                                                <option>${courseList.get(0).course.name}</option>
+                                                <option>${courseList.get(1).course.name}</option>
                                             </select>
                                         </div>
                                     </div>

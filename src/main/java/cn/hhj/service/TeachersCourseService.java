@@ -17,6 +17,8 @@ public interface TeachersCourseService {
     Integer update(TeachersCourse teachersCourse);
     List<TeachersCourse> quire(TeachersCourse teachersCourse);
     List<TeachersCourse> quireByClassId(Integer classId);
+    //联表查询
     List<TeacherCourseClassPo> jointQuire(TeachersCourse teachersCourse);
+    //根据课程的信息来查询课程，比如课程类型，课程时长
     List<TeacherCourseClassPo> courseListQuire(TeachersCourse teachersCourse, Course course);
 }
