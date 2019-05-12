@@ -77,11 +77,20 @@ public class GradeController extends BaseController{
         }
     }
 
+    /**
+     * 查询教师目前任课的课程，封装成courseList存入model，返回gradeadd_teacher.jsp页面
+     * @param session
+     * @param model
+     * @return
+     */
     @RequestMapping("/GradeAdd")
     public String gradeAdd(HttpSession session, Model model){
+        User user = (User) session.getAttribute(BaseInfo.USER);
+        if(user.getType() != 1)
+            return "error";
         TeachersInfo t1 = new TeachersInfo();
         //从session获取userID放入TeachersInfo对象
-        t1.setUser_id(((User)session.getAttribute(BaseInfo.USER)).getId());
+        t1.setUser_id(user.getId());
         //根据userID查询TeachersInfo信息
         TeachersInfo teachersInfo = teachersInfoMapper.quire(t1).get(0);
         TeachersCourse teachersCourse = new TeachersCourse();
@@ -90,6 +99,20 @@ public class GradeController extends BaseController{
         List<TeacherCourseClassPo> courseList = teachersCourseService.jointQuire(teachersCourse);
         model.addAttribute("courseList", courseList);
         return "gradeadd_teacher";
+    }
+
+    @RequestMapping("/courseGradeList")
+    @ResponseBody
+    public ResponsResult<List<GradeStudentsTeacherCoursePo>> courseGradeList(HttpSession session,@RequestBody Integer teachers_course_id){
+        if(teachers_course_id == null)
+            return failHandler("课程id为空");
+        User user = (User) session.getAttribute(BaseInfo.USER);
+        if(user.getType() != 1)
+            return failHandler("用户并无该权限");
+        Grade grade = new Grade();
+        grade.setTeachers_course_id(teachers_course_id);
+        List<GradeStudentsTeacherCoursePo> courseGradeList = gradeService.jointQuire(grade,new TeachersCourse());
+        return inbound(courseGradeList,"查询成功");
     }
 
     //从session取出user数据，查询studentsInfo_id并用grade封装
