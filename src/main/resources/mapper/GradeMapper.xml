@@ -20,6 +20,11 @@
             <result column="teachers_info_name" property="name"/>
         </association>
 
+        <association property="studentsInfo" javaType="cn.hhj.pojo.StudentsInfo">
+            <id column="students_info_id" javaType="INTEGER" property="id"/>
+            <result column="students_info_name" property="name"/>
+        </association>
+
     </resultMap>
 
     <insert id="add" parameterType="cn.hhj.pojo.Grade">
@@ -78,8 +83,9 @@
     <select id="jointQuire" resultMap="GradeStudentsTeacherCourseMap">
         SELECT grade.id,grade,students_info_id,teachers_course_id,
         course.id AS course_id,course.name AS course_name,
-        teachers_info.id AS teachers_info_id,teachers_info.name AS teachers_info_name
-        FROM grade,course,teachers_course,teachers_info
+        teachers_info.id AS teachers_info_id,teachers_info.name AS teachers_info_name,
+        students_info.id AS students_info_id,students_info.name AS students_info_name
+        FROM grade,course,teachers_course,teachers_info,students_info
         <where>
             <if test="grade.id != null">
                 id = #{grade.id}
@@ -94,6 +100,7 @@
                 and teachers_course_id = #{grade.teachers_course_id}
             </if>
             AND grade.teachers_course_id = teachers_course.id
+            AND grade.students_info_id = students_info.id
             AND teachers_course.course_id = course.id
             AND teachers_course.teachers_info_id = teachers_info.id
             <if test="teachersCourse.years != null">

@@ -115,6 +115,12 @@ public class GradeController extends BaseController{
         return inbound(courseGradeList,"查询成功");
     }
 
+    @RequestMapping("update")
+    @ResponseBody
+    public ResponsResult update(HttpSession session,@RequestBody Grade grade){
+        return inbound(null,null);
+    }
+
     //从session取出user数据，查询studentsInfo_id并用grade封装
     public Grade PackageGradeByUserId(HttpSession session){
         User user = (User)session.getAttribute(BaseInfo.USER);
