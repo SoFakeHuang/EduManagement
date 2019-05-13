@@ -2,6 +2,7 @@ package cn.hhj.controller;
 
 import cn.hhj.BaseInfo;
 import cn.hhj.ResponsResult;
+import cn.hhj.mapper.GradeMapper;
 import cn.hhj.mapper.TeachersInfoMapper;
 import cn.hhj.po.GradeStudentsTeacherCoursePo;
 import cn.hhj.po.TeacherCourseClassPo;
@@ -115,9 +116,31 @@ public class GradeController extends BaseController{
         return inbound(courseGradeList,"查询成功");
     }
 
-    @RequestMapping("update")
+    /**
+     * 修改课程学生成绩，先查看传入grade数据是否正确，检查教师用户是否为该课程的任课老师，
+     * 若不是，则没有修改该课程学生成绩的权限
+     * @param session
+     * @param grade
+     * @return
+     */
+    @RequestMapping("/update")
     @ResponseBody
     public ResponsResult update(HttpSession session,@RequestBody Grade grade){
+        User user = (User) session.getAttribute(BaseInfo.USER);
+        if(user.getType() != 1)
+            return failHandler("用户并无该权限");
+
+        TeachersInfo t1 = new TeachersInfo();
+        //从session获取userID放入TeachersInfo对象
+        t1.setUser_id(user.getId());
+        //根据userID查询TeachersInfo信息
+        TeachersInfo teachersInfo = teachersInfoMapper.quire(t1).get(0);
+        switch(gradeService.update(grade,teachersInfo)){
+            case -1: return failHandler("查无此成绩信息");
+            case -2: return failHandler("教师无修改该课程学生的成绩的权限");
+            case 0: return failHandler("sql执行失败");
+            case 1: return inbound(null,"修改成绩成功");
+        }
         return inbound(null,null);
     }
 
