@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
@@ -22,19 +23,13 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="/EduManagement/v0.3/gradeadd_teacher.jsp" class="nav-link active">
+                        <a href="/EduManagement/grade/GradeAdd" class="nav-link active">
                             <i class="icon icon-target"></i> 学生成绩操作
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="/EduManagement/v0.3/info_teacher.jsp" class="nav-link">
                             <i class="icon icon-energy"></i> 教师信息
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="/EduManagement/v0.3/info_teaQurey.jsp" class="nav-link">
-                            <i class="icon icon-energy"></i> 学生和班级信息
                         </a>
                     </li>
 
@@ -58,17 +53,16 @@
                                 <div class="row">
                                     <div class="col-md-4"></div>
                                     <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="single-select">课程名称</label>
-                                            <select id="single-select" class="form-control">
-                                                <option>${courseList.get(0).course.name}</option>
-                                                <option>${courseList.get(1).course.name}</option>
-                                            </select>
-                                        </div>
+                                        <label for="single-select">课程名称</label>
+                                        <select id="single-select" class="form-control">
+                                            <c:forEach items="${courseList}" var="list" varStatus="vs">
+                                                <option id="confirm_${list.id}" value="${list.id}">${list.course.name}</option>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                     <div class="col-md-1"></div>
                                     <div class="my-4 col-md-1">
-                                        <button class="btn btn-primary">查询</button>
+                                        <button id="quire" class="btn btn-primary">查询</button>
                                     </div>
                                 </div>
                             </div>
@@ -92,20 +86,10 @@
                                             <th>修改</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>name</td>
-                                            <td>老师名</td>
-                                            <td>98</td>
-                                            <td>
-                                                <button class="btn btn-outline-info" data-toggle="modal" data-target="#modal-4">修改</button>
-                                            </td>
-                                        </tr>
+                                        <tbody id="gradeTbody">
+
                                         </tbody>
                                     </table>
-                                </div>
-                                <div align="right">
-                                    <button class="btn btn-primary">提交</button>
                                 </div>
                             </div>
                         </div>
@@ -127,16 +111,109 @@
             </div>
 
             <div class="modal-body p-5">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Pellentesque lacinia non massa a euismod.
+                <div class="form-group">
+                    <label  for="grade" class="form-control-label">输入成绩</label>
+                    <input onblur="checkInt(this.value,100);" id="grade" class="form-control">
+                </div>
             </div>
 
             <div class="modal-footer border-0">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">提交</button>
+                <button  id="submit" type="button" class="btn btn-primary" data-dismiss="modal">提交</button>
             </div>
         </div>
     </div>
 </div>
 <%@include file="JSResource.jsp" %>
 </body>
+
+<%--查询课程--%>
+<script>
+    $('#quire').click(function () {
+        var checkValue = $("#single-select").val();//获取课程ID
+            $.ajax({
+                    url: "${pageContext.request.contextPath}/grade/courseGradeList",
+                    async:true,
+                    data: checkValue,
+                    dataType: "json",
+                    type: "post",
+                    contentType: "application/json;charset=utf-8",
+                    success: function (data) {
+                        // alert(data.msg)
+                        var html="";
+                        for (i=0;i<data.data.length;i++) {
+                            html+=`
+                              <tr>
+                                <td>`+data.data[i].studentsInfo.name+`</td>
+                                <td>`+data.data[i].teachersInfo.name+`</td>
+                                <td>`+data.data[i].grade+`</td>
+                                <td>
+                                    <button id="update_`+data.data[i].studentsInfo.id+`" name="`+i+`"
+                                    class="btn btn-outline-info" data-toggle="modal" data-target="#modal-4">修改</button>
+                                </td>
+                              </tr>
+                            `;
+                        }
+                        $('#gradeTbody').html(html)
+                        <%--修改成绩--%>
+                        $( function (){
+                            $( "button[id^='update_']" ).each( function(){//获取所有的id为confirm_开头的Button
+                                $( this ).bind("click" , function(){//绑定当前点击的按钮
+                                    var ids = $(this).attr( "name");//获取它的data下标属性值
+                                    var id = $(this).attr( "id");//获取它的id值
+                                    var obj;//包装json
+                                    var grade//获取成绩
+
+                                    //data下标
+                                    // alert(ids)
+
+                                    $("#submit").click(function () {
+                                        grade = $("#grade").val()
+                                        // alert(grade)
+                                        obj = {
+                                            "id":data.data[ids].id,
+                                            "teachers_course_id":data.data[ids].teachers_course_id,
+                                            "students_info_id": data.data[ids].students_info_id,
+                                            "grade":grade
+                                        }
+
+                                        //请求修改
+                                        $.ajax({
+                                                url: "${pageContext.request.contextPath}/grade/update",
+                                                data:JSON.stringify(obj),
+                                                dataType:"json",
+                                                type: "post",
+                                                contentType: "application/json;charset=utf-8",
+                                                success: function (data) {
+                                                    // alert(data.msg)
+                                                    $("#quire").trigger('click');
+                                                }
+                                            }
+                                        )
+                                    })
+                                });
+                            });
+                        });
+                    }
+                }
+            )
+    });
+</script>
+
+<script>
+    function checkInt(n,max){
+        var regex = /^\d+$/;
+        if(regex.test(n)){
+            if(n<max && n>0){
+
+            }else{
+                alert("输入0-100整数")
+                $(#submit).attr("disabled", true)
+            }
+        }else{
+            alert("非整数");
+            $(#submit).attr("disabled", true);
+        }
+    }
+</script>
+
 </html>

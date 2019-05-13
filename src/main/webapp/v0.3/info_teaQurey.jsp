@@ -32,12 +32,6 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="/EduManagement/v0.3/info_teaQurey.jsp" class="nav-link active">
-                            <i class="icon icon-energy"></i> 学生和班级信息
-                        </a>
-                    </li>
-
                     <li class="nav-title">更多</li>
 
                     <li class="nav-item nav-dropdown">
