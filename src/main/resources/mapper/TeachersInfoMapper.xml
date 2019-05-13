@@ -11,6 +11,13 @@
     <result column="teacher_number" jdbcType="VARCHAR" property="teacher_number" />
   </resultMap>
 
+  <resultMap id="TeacherDepartmentPoMap" type="cn.hhj.po.TeacherDepartmentPo" extends="BaseResultMap">
+    <association property="department" javaType="cn.hhj.pojo.Department">
+      <id column="department_id" property="id"/>
+      <result column="department_name" property="name"/>
+    </association>
+  </resultMap>
+
   <insert id="add" parameterType="cn.hhj.pojo.TeachersInfo">
     INSERT INTO teachers_info(
       name,
@@ -82,6 +89,44 @@
       <if test="teacher_number != null">
         and teacher_number = #{teacher_number}
       </if>
+    </where>
+  </select>
+
+  <select id="jointQuire" resultMap="TeacherDepartmentPoMap">
+    SELECT teachers_info.id,teachers_info.name,teachers_info.department_id,user_id,sex,phone,teacher_number,
+    department.id AS department_id,department.name AS department_name
+    FROM teachers_info,department
+    <where>
+      <if test="teachersInfo.id != null">
+        teachers_info.id = #{teachersInfo.id}
+      </if>
+      <if test="teachersInfo.name != null">
+        and teachers_info.name = #{teachersInfo.name}
+      </if>
+      <if test="teachersInfo.department_id != null">
+        and department_id = #{teachersInfo.department_id}
+      </if>
+      <if test="teachersInfo.user_id != null">
+        and user_id = #{teachersInfo.user_id}
+      </if>
+      <if test="teachersInfo.sex != null">
+        and sex = #{teachersInfo.sex}
+      </if>
+      <if test="teachersInfo.phone != null">
+        and phone = #{teachersInfo.phone}
+      </if>
+      <if test="teachersInfo.teacher_number != null">
+        and teacher_number = #{teachersInfo.teacher_number}
+      </if>
+
+      <if test="department.id != null">
+        and department.id = #{department.id}
+      </if>
+      <if test="department.name != null">
+        and department.name = #{department.name}
+      </if>
+
+      AND teachers_info.department_id = department.id
     </where>
   </select>
 

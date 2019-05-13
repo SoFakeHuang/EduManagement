@@ -3,11 +3,11 @@ package cn.hhj.controller;
 import cn.hhj.BaseInfo;
 import cn.hhj.ResponsResult;
 import cn.hhj.po.StudentClassDepartmentPo;
-import cn.hhj.pojo.Announcement;
-import cn.hhj.pojo.StudentsInfo;
-import cn.hhj.pojo.User;
+import cn.hhj.po.TeacherDepartmentPo;
+import cn.hhj.pojo.*;
 import cn.hhj.service.AnnouncementService;
 import cn.hhj.service.StudentsInfoService;
+import cn.hhj.service.TeachersInfoService;
 import cn.hhj.service.UserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -31,6 +31,9 @@ public class UserController extends BaseController{
 
     @Autowired
     private StudentsInfoService studentsInfoService;
+
+    @Autowired
+    private TeachersInfoService teachersInfoService;
 
     @Autowired
     private AnnouncementService announcementService;
@@ -59,6 +62,9 @@ public class UserController extends BaseController{
                 case 0:
                     return "index_admin";
                 case 1:
+                    TeachersInfo teachersInfo = new TeachersInfo();
+                    teachersInfo.setUser_id(userList.get(0).getId());
+                    model.addAttribute("teacherDepartmentPo",teachersInfoService.jointQuire(teachersInfo,new Department()).get(0));
                     return "index_teacher";
                 case 2:
                     StudentsInfo studentsInfo = new StudentsInfo();
@@ -87,6 +93,9 @@ public class UserController extends BaseController{
         switch (user.getType()){
             case 0:
             case 1:
+                TeacherDepartmentPo teacherDepartmentPo = (TeacherDepartmentPo)userInfo;
+                model.addAttribute("teacherDepartmentPo",teacherDepartmentPo);
+                return "index_teacher";
             case 2:
                 StudentClassDepartmentPo studentClassDepartmentPo = (StudentClassDepartmentPo)userInfo;
                 model.addAttribute("studentClassDepartmentPo",studentClassDepartmentPo);

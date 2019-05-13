@@ -27,7 +27,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/EduManagement/v0.3/info_teacher.jsp" class="nav-link active">
+                        <a href="/EduManagement/teachersInfo/personalTeachersInfo" class="nav-link active">
                             <i class="icon icon-energy"></i> 教师信息
                         </a>
                     </li>
@@ -70,9 +70,9 @@
 
                                                     <div class="card-body bg-info">
                                                         <ul>
-                                                            <li>工号：516556</li>
-                                                            <li>姓名:</li>
-                                                            <li>性别</li>
+                                                            <li>工号：${teachersInfo.teacher_number}</li>
+                                                            <li>姓名:${teachersInfo.name}</li>
+                                                            <li>性别:${teachersInfo.sex}</li>
                                                             <li>用户组</li>
                                                         </ul>
                                                     </div>
@@ -87,9 +87,9 @@
 
                                                     <div class="card-body bg-primary">
                                                         <ul>
-                                                            <li>电话号码：</li>
+                                                            <li>电话号码：${teachersInfo.phone}</li>
                                                             <li>籍贯：</li>
-                                                            <li>身份证号码：</li>
+                                                            <li>身份证号码：${teachersInfo.user_id}</li>
                                                         </ul>
                                                     </div>
                                                 </div>

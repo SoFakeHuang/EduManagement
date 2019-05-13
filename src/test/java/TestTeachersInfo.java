@@ -1,4 +1,5 @@
 import cn.hhj.mapper.TeachersInfoMapper;
+import cn.hhj.pojo.Department;
 import cn.hhj.pojo.TeachersInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -48,5 +49,12 @@ public class TestTeachersInfo {
         TeachersInfo teachersInfo = new TeachersInfo();
         teachersInfo.setName("惠咸");
         System.out.println(teachersInfoMapper.quire(teachersInfo).get(0).getName());
+    }
+
+    @Test
+    public void jointQuire(){
+        TeachersInfo teachersInfo = new TeachersInfo();
+        teachersInfo.setId(2);
+        System.out.println(teachersInfoMapper.jointQuire(teachersInfo,new Department()).get(0).getName());
     }
 }

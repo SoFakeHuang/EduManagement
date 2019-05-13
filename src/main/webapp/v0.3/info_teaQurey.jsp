@@ -27,7 +27,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/EduManagement/v0.3/info_teacher.jsp" class="nav-link">
+                        <a href="/EduManagement/teachersInfo/personalTeachersInfo" class="nav-link">
                             <i class="icon icon-energy"></i> 教师信息
                         </a>
                     </li>

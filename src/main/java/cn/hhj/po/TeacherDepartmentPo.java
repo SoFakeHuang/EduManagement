@@ -1,6 +1,13 @@
-package cn.hhj.pojo;
+package cn.hhj.po;
 
-public class TeachersInfo {
+import cn.hhj.pojo.Department;
+
+/**
+ * @Author: SoFakeHuang
+ * @Date: 2019/5/13 13:37
+ * @Version 1.0
+ */
+public class TeacherDepartmentPo {
     private Integer id;
 
     private String name;
@@ -15,6 +22,8 @@ public class TeachersInfo {
 
     private String teacher_number;
 
+    private Department department;
+
     public Integer getId() {
         return id;
     }
@@ -28,7 +37,7 @@ public class TeachersInfo {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public Integer getDepartment_id() {
@@ -52,7 +61,7 @@ public class TeachersInfo {
     }
 
     public void setSex(String sex) {
-        this.sex = sex == null ? null : sex.trim();
+        this.sex = sex;
     }
 
     public String getPhone() {
@@ -60,7 +69,7 @@ public class TeachersInfo {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+        this.phone = phone;
     }
 
     public String getTeacher_number() {
@@ -69,5 +78,13 @@ public class TeachersInfo {
 
     public void setTeacher_number(String teacher_number) {
         this.teacher_number = teacher_number;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }

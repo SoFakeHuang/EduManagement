@@ -16,7 +16,7 @@
                     <li class="nav-title">导航</li>
 
                     <li class="nav-item">
-                        <a href="/EduManagement/v0.3/index_teacher.jsp" class="nav-link active">
+                        <a href="/EduManagement/user/indexInfo" class="nav-link active">
                             <i class="icon icon-speedometer"></i> 主页
                         </a>
                     </li>
@@ -27,7 +27,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/EduManagement/v0.3/info_teacher.jsp" class="nav-link">
+                        <a href="/EduManagement/teachersInfo/personalTeachersInfo " class="nav-link">
                             <i class="icon icon-energy"></i> 教师信息
                         </a>
                     </li>
@@ -56,8 +56,8 @@
                         <div class="card p-4">
                             <div class="card-body d-flex justify-content-between align-items-center">
                                 <div>
-                                    <span class="h4 d-block font-weight-normal mb-2">用户名</span>
-                                    <span class="font-weight-light">班级</span>
+                                    <span class="h4 d-block font-weight-normal mb-2">${teacherDepartmentPo.name}</span>
+                                    <span class="font-weight-light">${teacherDepartmentPo.department.name}</span>
                                 </div>
 
                                 <div class="h2 text-muted">
